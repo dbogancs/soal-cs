@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//GitProba
 namespace MetaDslx.Languages.Soal.Generator
 {
     public class SoalGeneratorErrorCode : ErrorCode
