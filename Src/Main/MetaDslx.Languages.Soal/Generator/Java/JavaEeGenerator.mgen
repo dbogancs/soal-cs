@@ -1,0 +1,197 @@
+﻿namespace MetaDslx.Languages.Soal.Generator.Java;
+generator JavaEeGenerator for object;
+
+using MetaDslx.Languages.Soal.Symbols;
+using MetaDslx.Core;
+
+
+template Generate()
+
+end template
+
+template GenerateEntity(Struct e, ImmutableModelList<Struct> entities)
+package [e.Namespace.Name.ToLower()];
+^
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
+import java.util.List;
+import java.util.Date;
+[addAttributeImports(e)]
+^
+@Entity
+public class [e.Name] implements Serializable {
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+^
+	[loop(iprop:e.Properties)]
+	
+	[addAttributeAnnotations(e, iprop, entities)]
+	private [tC(iprop.Type)] [aC(iprop.Name)];
+	[end loop]
+^
+^
+	[loop(iprop:e.Properties)]
+	public [tC(iprop.Type)] get[iprop.Name]() {
+		return [aC(iprop.Name)];
+	}
+	public void set[iprop.Name]([tC(iprop.Type)] [aC(iprop.Name)]) {
+		this.[aC(iprop.Name)] = [aC(iprop.Name)];
+	}
+^
+	[end loop]
+^
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+^
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof [e.Name])) {
+            return false;
+        }
+        [e.Name] other = ([e.Name]) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+^
+    @Override
+    public String toString() {
+        return "[e.Namespace.Name].[e.Name]["["] id=" + id + " ["]"]";
+    }
+^
+}
+end template
+
+template GenerateEnum(MetaDslx.Languages.Soal.Symbols.Enum en)
+package [en.Namespace.Name.ToLower()];
+^
+public enum [en.Name] {
+	[int i=0]
+	[loop(iprop:en.MChildren)]
+	[aC(iprop.MName)][if(i!=en.MChildren.Count-1)],[end if]
+	[i=i+1]
+	[end loop]
+}
+end template
+
+template addAttributeImports(Struct e)
+	[loop(iprop:e.Properties)]
+		[if (iprop.Type.MMetaClass.Name.Equals("ArrayType"))]
+
+		[else if (iprop.Type.MName.Equals("TimeSpan"))]
+
+		[end if]
+	[end loop]
+end template
+
+
+template addAttributeAnnotations(Struct mainEntity, Property mainProp,  ImmutableModelList<Struct> allEntities)
+	[bool fromOne = false]
+	[bool fromMany = false]
+	[bool toOne = false]
+	[bool toMany = false]
+	[bool isJoin = false]
+	[String mappedBy = null]
+	[if(mainProp.Type != null)]
+		[if (mainProp.Type.MName != null)]
+			[if(mainProp.Type.MName.Equals("TimeSpan"))]
+@Temporal(TemporalType.TIMESTAMP)
+			[else if(false)]
+			[else]
+			[end if]
+		[end if]
+
+		[if(true)]
+			[loop(entity:allEntities)]
+				[loop(eprop:entity.Properties)]
+					[if (eprop.Type.MName != null && eprop.Type.MName.Equals(mainEntity.Name))]
+						[fromOne = true]
+						[mappedBy = eprop.Name]
+					[else if(eprop.Type.MMetaClass.MName.Equals("ArrayType"))]
+						[ArrayType at = (ArrayType) eprop.Type]
+						[if (at.InnerType != null && at.InnerType.MName.Equals(mainEntity.Name))]
+							[fromMany = true]
+						[mappedBy = eprop.Name]
+						[end if]
+					[end if]
+				[end loop]
+			[end loop]
+			[loop(entity:allEntities)]
+				[if (mainProp.Type.MName != null && mainProp.Type.MName.Equals(entity.Name))]
+					[toOne = true]
+				[else if (mainProp.Type.MMetaClass.MName.Equals("ArrayType"))]
+					[ArrayType at = (ArrayType) mainProp.Type]
+					[if (at.InnerType != null && at.InnerType.MName.Equals(entity.Name))]
+						[toMany = true]
+					[end if]
+				[end if]
+			[end loop]
+			[isJoin = (toOne || toMany || fromOne || fromMany)]
+			[if (false)]
+			[else if (fromOne && toOne)]
+@OneToOne
+@JoinColumn(name = "[cC(mainProp.Name)]")
+			[else if (fromOne && toMany)]
+@OneToMany(mappedBy="[mappedBy]")
+@JoinColumn(name = "[cC(mainProp.Name)]")
+			[else if (fromMany && toOne)]
+@ManyToOne
+@JoinColumn(name = "[cC(mainProp.Name)]")
+			[else if (fromMany && toMany)]
+@ManyToMany
+@JoinColumn(name = "[cC(mainProp.Name)]")
+			[else]
+@Column(name = "[cC(mainProp.Name)]")
+			[end if]
+		[end if]
+	[end if]
+end template
+
+
+function string aC(String attributeName)
+	return Char.ToLowerInvariant(attributeName[0]) + attributeName.Substring(1);
+end function
+
+function string cC(String columnName)
+	return columnName.ToUpper();
+end function
+
+function string tC(SoalType t)
+	if (t.MName != null)
+		if (t.MName.Equals("TimeSpan"))
+			return "Date";
+		else if (t.MName.Equals("string"))
+			return "String";
+		else if (t.MName.Equals("DateTime"))
+			return "Date";
+		else
+			return t.MName;
+		end if
+	else
+		ArrayType at = (ArrayType) t; 
+		if (at.MMetaClass.Name.Equals("ArrayType") && at.InnerType!=null && !at.InnerType.MName.Equals(null)) 
+			return "List<" + at.InnerType.MName + ">";
+		else
+			return "";
+		end if
+	end if
+end function

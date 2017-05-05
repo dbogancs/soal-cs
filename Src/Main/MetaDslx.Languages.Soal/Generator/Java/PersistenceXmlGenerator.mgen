@@ -1,0 +1,29 @@
+﻿namespace MetaDslx.Languages.Soal.Generator.Java;
+generator PersistenceXmlGenerator for object;
+
+using System.Collections;
+
+template Generate(String persistenceUnit, IEnumerable<String> classes, String url, String username, String password)
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="[persistenceUnit]" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+[loop(ins:classes)]
+		<class>[classFullNamePackageConvention(ins)]</class>
+[end loop]
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="[url]"/>
+			<property name="javax.persistence.jdbc.user" value="[username]"/>
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+			<property name="javax.persistence.jdbc.password" value="[password]"/>
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+		</properties>
+	</persistence-unit>
+</persistence>
+end template
+
+function string classFullNamePackageConvention(String fullName)
+	String className = fullName.Split('.').Last();
+	int splitIndex = fullName.LastIndexOf(".");
+	return fullName.Substring(0,splitIndex).ToLower() +"."+ className;
+end function

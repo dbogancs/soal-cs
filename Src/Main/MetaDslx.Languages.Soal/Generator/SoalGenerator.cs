@@ -5,12 +5,14 @@ using MetaDslx.Core;
 using MetaDslx.Languages.Soal.Generator;
 using MetaDslx.Languages.Soal.Symbols;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MetaDslx.Languages.Soal.Generator.Java;
 
 namespace MetaDslx.Languages.Soal
 {
@@ -195,7 +197,7 @@ namespace MetaDslx.Languages.Soal
             }
         }
 
-        public void Generate()
+        public void Generate() // konstruktorVsfuggvenyPara namespaces imports
         {
             this.PrepareGeneration();
             if (this.diagnostics.HasAnyErrors()) return;
@@ -237,9 +239,10 @@ namespace MetaDslx.Languages.Soal
                         wsdlGen.Properties.SeparateXsdWsdl = this.SeparateXsdWsdl;
                         writer.WriteLine(wsdlGen.Generate(ns));
                     }
+
+                    JavaEeGenerationHelper.generateJavaEe(ns, this.OutputDirectory);
                 }
             }
         }
-
     }
 }
