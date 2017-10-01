@@ -2,24 +2,24 @@
 generator PomXmlGenerator for object;
 
 using MetaDslx.Languages.Soal.Symbols;
+using MetaDslx.Languages.Soal.Generator.Java;
 
-
-template Generate(List<String> projectGrArtVer, List<String> serverGrArtVer, List<List<String>> dependencies)
+template Generate(PomXmlIdentifier project, PomXmlIdentifier server, List<PomXmlIdentifier> dependencies)
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>[projectGrArtVer.ElementAt(0)]</groupId>
-	<artifactId>[projectGrArtVer.ElementAt(1)]</artifactId>
-	<version>[projectGrArtVer.ElementAt(2)]</version>
+	<groupId>[project.groupId]</groupId>
+	<artifactId>[project.artifactId]</artifactId>
+	<version>[project.version]</version>
 ^
 ^
 	<dependencies>
 ^
 [loop (dependency:dependencies)]
 		<dependency>
-		  <groupId>[dependency.ElementAt(0)]</groupId>
-		  <artifactId>[dependency.ElementAt(1)]</artifactId>
-		  <version>[dependency.ElementAt(2)]</version>
+		  <groupId>[dependency.groupId]</groupId>
+		  <artifactId>[dependency.artifactId]</artifactId>
+		  <version>[dependency.version]</version>
 		</dependency>
 ^
 [end loop]
@@ -29,11 +29,11 @@ template Generate(List<String> projectGrArtVer, List<String> serverGrArtVer, Lis
 	<build>
 		<plugins>
 ^
-[if (serverGrArtVer != null && serverGrArtVer.Count == 3)]
+[if (server != null)]
 			<plugin>
-				<groupId>[serverGrArtVer.ElementAt(0)]</groupId>
-				<artifactId>[serverGrArtVer.ElementAt(1)]</artifactId>
-				<version>[serverGrArtVer.ElementAt(2)]</version>
+				<groupId>[server.groupId]</groupId>
+				<artifactId>[server.artifactId]</artifactId>
+				<version>[server.version]</version>
 			</plugin>
 ^
 [end if]

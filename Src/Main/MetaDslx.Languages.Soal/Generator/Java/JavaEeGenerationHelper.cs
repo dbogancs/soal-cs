@@ -54,28 +54,29 @@ namespace MetaDslx.Languages.Soal.Generator.Java
         {
             using (StreamWriter writer = new StreamWriter(Path.Combine(root, "pom.xml")))
             {
-                List<String> projectGrArtVer = new List<String>();
-                projectGrArtVer.Add(composite.MName);
-                projectGrArtVer.Add(component.MName);
-                projectGrArtVer.Add("1.0");
-                List<String> serverGrArtVer = new List<String>();
-                //serverGrArtVer.Add("org.wildfly.plugins");
-                //serverGrArtVer.Add("wildfly-javaee7-with-tools");
-                //serverGrArtVer.Add("10.1.0.Final");
-                List<List<String>> dependencies = new List<List<String>>();
-                List<String> junitDep = new List<String>();
-                junitDep.Add("junit");
-                junitDep.Add("junit");
-                junitDep.Add("3.8.1");
-                List<String> jpaDep = new List<String>();
-                jpaDep.Add("org.hibernate.javax.persistence");
-                jpaDep.Add("hibernate-jpa-2.0-api");
-                jpaDep.Add("1.0.1.Final");
+                PomXmlIdentifier project = new PomXmlIdentifier();
+                project.groupId = composite.MName;
+                project.artifactId = component.MName;
+                project.version = "1.0";
+                PomXmlIdentifier server = null;
+                //PomXmlIdentifier = new List<String>();
+                //server.groupId = "org.wildfly.plugins";
+                //server.artifactId = "wildfly-javaee7-with-tools";
+                //server.version = "10.1.0.Final";
+                List<PomXmlIdentifier> dependencies = new List<PomXmlIdentifier>();
+                PomXmlIdentifier junitDep = new PomXmlIdentifier();
+                junitDep.groupId = "junit";
+                junitDep.artifactId = "junit";
+                junitDep.version = "3.8.1";
+                PomXmlIdentifier jpaDep = new PomXmlIdentifier();
+                jpaDep.groupId = "org.hibernate.javax.persistence";
+                jpaDep.artifactId = "hibernate-jpa-2.0-api";
+                jpaDep.version = "1.0.1.Final";
                 
                 dependencies.Add(junitDep);
                 dependencies.Add(jpaDep);
                 PomXmlGenerator pomGen = new PomXmlGenerator();
-                writer.WriteLine(pomGen.Generate(projectGrArtVer,serverGrArtVer,dependencies));
+                writer.WriteLine(pomGen.Generate(project, server,dependencies));
             }
         }
 
@@ -110,7 +111,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java
             }
         }
 
-        public static void generateJavaEe(Namespace ns, String outputDirectory)
+        public static void GenerateJavaEe(Namespace ns, String outputDirectory)
         {
             foreach (var dec in ns.Declarations)
             {

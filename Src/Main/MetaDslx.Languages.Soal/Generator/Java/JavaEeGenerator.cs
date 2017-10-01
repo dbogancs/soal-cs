@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MetaDslx.Languages.Soal.Symbols; //4:1
-using MetaDslx.Core; //5:1
+using MetaDslx.Languages.Soal.Generator.Java; //5:1
+using MetaDslx.Core; //6:1
 
 namespace MetaDslx.Languages.Soal.Generator.Java //1:1
 {
-    using __Hidden_JavaEeGenerator_1426566488;
-    namespace __Hidden_JavaEeGenerator_1426566488
+    using __Hidden_JavaEeGenerator_203315240;
+    namespace __Hidden_JavaEeGenerator_203315240
     {
         internal static class __Extensions
         {
@@ -60,17 +61,17 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             return ++counter;
         }
 
-        public string Generate() //8:1
+        public string Generate() //9:1
         {
             StringBuilder __out = new StringBuilder();
             return __out.ToString();
         }
 
-        public string GenerateEntity(Struct e, ImmutableModelList<Struct> entities) //12:1
+        public string GenerateEntity(Struct e, ImmutableModelList<Struct> entities) //13:1
         {
             StringBuilder __out = new StringBuilder();
             bool __tmp2_outputWritten = false;
-            string __tmp3_line = "package "; //13:1
+            string __tmp3_line = "package "; //14:1
             if (!string.IsNullOrEmpty(__tmp3_line))
             {
                 __out.Append(__tmp3_line);
@@ -93,7 +94,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp4_last) __out.AppendLine(true);
                 }
             }
-            string __tmp5_line = ";"; //13:37
+            string __tmp5_line = ";"; //14:37
             if (!string.IsNullOrEmpty(__tmp5_line))
             {
                 __out.Append(__tmp5_line);
@@ -102,39 +103,39 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             if (__tmp2_outputWritten) __out.AppendLine(true);
             if (__tmp2_outputWritten)
             {
-                __out.AppendLine(false); //13:38
+                __out.AppendLine(false); //14:38
             }
-            __out.AppendLine(true); //14:1
-            __out.Append("import java.io.Serializable;"); //15:1
-            __out.AppendLine(false); //15:29
-            __out.Append("import javax.persistence.Column;"); //16:1
-            __out.AppendLine(false); //16:33
-            __out.Append("import javax.persistence.Entity;"); //17:1
+            __out.AppendLine(true); //15:1
+            __out.Append("import java.io.Serializable;"); //16:1
+            __out.AppendLine(false); //16:29
+            __out.Append("import javax.persistence.Column;"); //17:1
             __out.AppendLine(false); //17:33
-            __out.Append("import javax.persistence.GeneratedValue;"); //18:1
-            __out.AppendLine(false); //18:41
-            __out.Append("import javax.persistence.GenerationType;"); //19:1
+            __out.Append("import javax.persistence.Entity;"); //18:1
+            __out.AppendLine(false); //18:33
+            __out.Append("import javax.persistence.GeneratedValue;"); //19:1
             __out.AppendLine(false); //19:41
-            __out.Append("import javax.persistence.Id;"); //20:1
-            __out.AppendLine(false); //20:29
-            __out.Append("import javax.persistence.Temporal;"); //21:1
-            __out.AppendLine(false); //21:35
-            __out.Append("import javax.persistence.TemporalType;"); //22:1
-            __out.AppendLine(false); //22:39
-            __out.Append("import javax.persistence.JoinColumn;"); //23:1
-            __out.AppendLine(false); //23:37
-            __out.Append("import javax.persistence.OneToOne;"); //24:1
-            __out.AppendLine(false); //24:35
-            __out.Append("import javax.persistence.OneToMany;"); //25:1
-            __out.AppendLine(false); //25:36
-            __out.Append("import javax.persistence.ManyToOne;"); //26:1
+            __out.Append("import javax.persistence.GenerationType;"); //20:1
+            __out.AppendLine(false); //20:41
+            __out.Append("import javax.persistence.Id;"); //21:1
+            __out.AppendLine(false); //21:29
+            __out.Append("import javax.persistence.Temporal;"); //22:1
+            __out.AppendLine(false); //22:35
+            __out.Append("import javax.persistence.TemporalType;"); //23:1
+            __out.AppendLine(false); //23:39
+            __out.Append("import javax.persistence.JoinColumn;"); //24:1
+            __out.AppendLine(false); //24:37
+            __out.Append("import javax.persistence.OneToOne;"); //25:1
+            __out.AppendLine(false); //25:35
+            __out.Append("import javax.persistence.OneToMany;"); //26:1
             __out.AppendLine(false); //26:36
-            __out.Append("import javax.persistence.ManyToMany;"); //27:1
-            __out.AppendLine(false); //27:37
-            __out.Append("import java.util.List;"); //28:1
-            __out.AppendLine(false); //28:23
-            __out.Append("import java.util.Date;"); //29:1
+            __out.Append("import javax.persistence.ManyToOne;"); //27:1
+            __out.AppendLine(false); //27:36
+            __out.Append("import javax.persistence.ManyToMany;"); //28:1
+            __out.AppendLine(false); //28:37
+            __out.Append("import java.util.List;"); //29:1
             __out.AppendLine(false); //29:23
+            __out.Append("import java.util.Date;"); //30:1
+            __out.AppendLine(false); //30:23
             bool __tmp7_outputWritten = false;
             StringBuilder __tmp8 = new StringBuilder();
             __tmp8.Append(addAttributeImports(e));
@@ -155,13 +156,13 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             }
             if (__tmp7_outputWritten)
             {
-                __out.AppendLine(false); //30:25
+                __out.AppendLine(false); //31:25
             }
-            __out.AppendLine(true); //31:1
-            __out.Append("@Entity"); //32:1
-            __out.AppendLine(false); //32:8
+            __out.AppendLine(true); //32:1
+            __out.Append("@Entity"); //33:1
+            __out.AppendLine(false); //33:8
             bool __tmp10_outputWritten = false;
-            string __tmp11_line = "public class "; //33:1
+            string __tmp11_line = "public class "; //34:1
             if (!string.IsNullOrEmpty(__tmp11_line))
             {
                 __out.Append(__tmp11_line);
@@ -184,7 +185,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp12_last) __out.AppendLine(true);
                 }
             }
-            string __tmp13_line = " implements Serializable {"; //33:22
+            string __tmp13_line = " implements Serializable {"; //34:22
             if (!string.IsNullOrEmpty(__tmp13_line))
             {
                 __out.Append(__tmp13_line);
@@ -193,27 +194,27 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             if (__tmp10_outputWritten) __out.AppendLine(true);
             if (__tmp10_outputWritten)
             {
-                __out.AppendLine(false); //33:48
+                __out.AppendLine(false); //34:48
             }
-            __out.Append("    private static final long serialVersionUID = 1L;"); //34:1
-            __out.AppendLine(false); //34:53
-            __out.Append("    @Id"); //35:1
-            __out.AppendLine(false); //35:8
-            __out.Append("    @GeneratedValue(strategy = GenerationType.AUTO)"); //36:1
-            __out.AppendLine(false); //36:52
-            __out.Append("    private Long id;"); //37:1
-            __out.AppendLine(false); //37:21
-            __out.AppendLine(true); //38:1
+            __out.Append("    private static final long serialVersionUID = 1L;"); //35:1
+            __out.AppendLine(false); //35:53
+            __out.Append("    @Id"); //36:1
+            __out.AppendLine(false); //36:8
+            __out.Append("    @GeneratedValue(strategy = GenerationType.AUTO)"); //37:1
+            __out.AppendLine(false); //37:52
+            __out.Append("    private Long id;"); //38:1
+            __out.AppendLine(false); //38:21
+            __out.AppendLine(true); //39:1
             var __loop1_results = 
-                (from iprop in __Enumerate((e.Properties).GetEnumerator()) //39:8
+                (from iprop in __Enumerate((e.Properties).GetEnumerator()) //40:8
                 select new { iprop = iprop}
-                ).ToList(); //39:3
+                ).ToList(); //40:3
             for (int __loop1_iteration = 0; __loop1_iteration < __loop1_results.Count; ++__loop1_iteration)
             {
                 var __tmp14 = __loop1_results[__loop1_iteration];
                 var iprop = __tmp14.iprop;
                 bool __tmp16_outputWritten = false;
-                string __tmp15Prefix = "	"; //41:1
+                string __tmp15Prefix = "	"; //42:1
                 StringBuilder __tmp17 = new StringBuilder();
                 __tmp17.Append(addAttributeAnnotations(e, iprop, entities));
                 using(StreamReader __tmp17Reader = new StreamReader(this.__ToStream(__tmp17.ToString())))
@@ -238,10 +239,10 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                 }
                 if (__tmp16_outputWritten)
                 {
-                    __out.AppendLine(false); //41:47
+                    __out.AppendLine(false); //42:47
                 }
                 bool __tmp19_outputWritten = false;
-                string __tmp20_line = "	private "; //42:1
+                string __tmp20_line = "	private "; //43:1
                 if (!string.IsNullOrEmpty(__tmp20_line))
                 {
                     __out.Append(__tmp20_line);
@@ -264,7 +265,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp21_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp22_line = " "; //42:26
+                string __tmp22_line = " "; //43:26
                 if (!string.IsNullOrEmpty(__tmp22_line))
                 {
                     __out.Append(__tmp22_line);
@@ -287,7 +288,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp23_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp24_line = ";"; //42:43
+                string __tmp24_line = ";"; //43:43
                 if (!string.IsNullOrEmpty(__tmp24_line))
                 {
                     __out.Append(__tmp24_line);
@@ -296,21 +297,21 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                 if (__tmp19_outputWritten) __out.AppendLine(true);
                 if (__tmp19_outputWritten)
                 {
-                    __out.AppendLine(false); //42:44
+                    __out.AppendLine(false); //43:44
                 }
             }
-            __out.AppendLine(true); //44:1
             __out.AppendLine(true); //45:1
+            __out.AppendLine(true); //46:1
             var __loop2_results = 
-                (from iprop in __Enumerate((e.Properties).GetEnumerator()) //46:8
+                (from iprop in __Enumerate((e.Properties).GetEnumerator()) //47:8
                 select new { iprop = iprop}
-                ).ToList(); //46:3
+                ).ToList(); //47:3
             for (int __loop2_iteration = 0; __loop2_iteration < __loop2_results.Count; ++__loop2_iteration)
             {
                 var __tmp25 = __loop2_results[__loop2_iteration];
                 var iprop = __tmp25.iprop;
                 bool __tmp27_outputWritten = false;
-                string __tmp28_line = "	public "; //47:1
+                string __tmp28_line = "	public "; //48:1
                 if (!string.IsNullOrEmpty(__tmp28_line))
                 {
                     __out.Append(__tmp28_line);
@@ -333,7 +334,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp29_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp30_line = " get"; //47:25
+                string __tmp30_line = " get"; //48:25
                 if (!string.IsNullOrEmpty(__tmp30_line))
                 {
                     __out.Append(__tmp30_line);
@@ -356,7 +357,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp31_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp32_line = "() {"; //47:41
+                string __tmp32_line = "() {"; //48:41
                 if (!string.IsNullOrEmpty(__tmp32_line))
                 {
                     __out.Append(__tmp32_line);
@@ -365,10 +366,10 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                 if (__tmp27_outputWritten) __out.AppendLine(true);
                 if (__tmp27_outputWritten)
                 {
-                    __out.AppendLine(false); //47:45
+                    __out.AppendLine(false); //48:45
                 }
                 bool __tmp34_outputWritten = false;
-                string __tmp35_line = "		return "; //48:1
+                string __tmp35_line = "		return "; //49:1
                 if (!string.IsNullOrEmpty(__tmp35_line))
                 {
                     __out.Append(__tmp35_line);
@@ -391,7 +392,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp36_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp37_line = ";"; //48:26
+                string __tmp37_line = ";"; //49:26
                 if (!string.IsNullOrEmpty(__tmp37_line))
                 {
                     __out.Append(__tmp37_line);
@@ -400,12 +401,12 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                 if (__tmp34_outputWritten) __out.AppendLine(true);
                 if (__tmp34_outputWritten)
                 {
-                    __out.AppendLine(false); //48:27
+                    __out.AppendLine(false); //49:27
                 }
-                __out.Append("	}"); //49:1
-                __out.AppendLine(false); //49:3
+                __out.Append("	}"); //50:1
+                __out.AppendLine(false); //50:3
                 bool __tmp39_outputWritten = false;
-                string __tmp40_line = "	public void set"; //50:1
+                string __tmp40_line = "	public void set"; //51:1
                 if (!string.IsNullOrEmpty(__tmp40_line))
                 {
                     __out.Append(__tmp40_line);
@@ -428,7 +429,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp41_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp42_line = "("; //50:29
+                string __tmp42_line = "("; //51:29
                 if (!string.IsNullOrEmpty(__tmp42_line))
                 {
                     __out.Append(__tmp42_line);
@@ -451,7 +452,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp43_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp44_line = " "; //50:46
+                string __tmp44_line = " "; //51:46
                 if (!string.IsNullOrEmpty(__tmp44_line))
                 {
                     __out.Append(__tmp44_line);
@@ -474,7 +475,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp45_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp46_line = ") {"; //50:63
+                string __tmp46_line = ") {"; //51:63
                 if (!string.IsNullOrEmpty(__tmp46_line))
                 {
                     __out.Append(__tmp46_line);
@@ -483,10 +484,10 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                 if (__tmp39_outputWritten) __out.AppendLine(true);
                 if (__tmp39_outputWritten)
                 {
-                    __out.AppendLine(false); //50:66
+                    __out.AppendLine(false); //51:66
                 }
                 bool __tmp48_outputWritten = false;
-                string __tmp49_line = "		this."; //51:1
+                string __tmp49_line = "		this."; //52:1
                 if (!string.IsNullOrEmpty(__tmp49_line))
                 {
                     __out.Append(__tmp49_line);
@@ -509,7 +510,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp50_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp51_line = " = "; //51:24
+                string __tmp51_line = " = "; //52:24
                 if (!string.IsNullOrEmpty(__tmp51_line))
                 {
                     __out.Append(__tmp51_line);
@@ -532,7 +533,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp52_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp53_line = ";"; //51:43
+                string __tmp53_line = ";"; //52:43
                 if (!string.IsNullOrEmpty(__tmp53_line))
                 {
                     __out.Append(__tmp53_line);
@@ -541,34 +542,34 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                 if (__tmp48_outputWritten) __out.AppendLine(true);
                 if (__tmp48_outputWritten)
                 {
-                    __out.AppendLine(false); //51:44
+                    __out.AppendLine(false); //52:44
                 }
-                __out.Append("	}"); //52:1
-                __out.AppendLine(false); //52:3
-                __out.AppendLine(true); //53:1
+                __out.Append("	}"); //53:1
+                __out.AppendLine(false); //53:3
+                __out.AppendLine(true); //54:1
             }
-            __out.AppendLine(true); //55:1
-            __out.Append("    @Override"); //56:1
-            __out.AppendLine(false); //56:14
-            __out.Append("    public int hashCode() {"); //57:1
-            __out.AppendLine(false); //57:28
-            __out.Append("        int hash = 0;"); //58:1
-            __out.AppendLine(false); //58:22
-            __out.Append("        hash += (id != null ? id.hashCode() : 0);"); //59:1
-            __out.AppendLine(false); //59:50
-            __out.Append("        return hash;"); //60:1
-            __out.AppendLine(false); //60:21
-            __out.Append("    }"); //61:1
-            __out.AppendLine(false); //61:6
-            __out.AppendLine(true); //62:1
-            __out.Append("    @Override"); //63:1
-            __out.AppendLine(false); //63:14
-            __out.Append("    public boolean equals(Object object) {"); //64:1
-            __out.AppendLine(false); //64:43
-            __out.Append("        // TODO: Warning - this method won't work in the case the id fields are not set"); //65:1
-            __out.AppendLine(false); //65:88
+            __out.AppendLine(true); //56:1
+            __out.Append("    @Override"); //57:1
+            __out.AppendLine(false); //57:14
+            __out.Append("    public int hashCode() {"); //58:1
+            __out.AppendLine(false); //58:28
+            __out.Append("        int hash = 0;"); //59:1
+            __out.AppendLine(false); //59:22
+            __out.Append("        hash += (id != null ? id.hashCode() : 0);"); //60:1
+            __out.AppendLine(false); //60:50
+            __out.Append("        return hash;"); //61:1
+            __out.AppendLine(false); //61:21
+            __out.Append("    }"); //62:1
+            __out.AppendLine(false); //62:6
+            __out.AppendLine(true); //63:1
+            __out.Append("    @Override"); //64:1
+            __out.AppendLine(false); //64:14
+            __out.Append("    public boolean equals(Object object) {"); //65:1
+            __out.AppendLine(false); //65:43
+            __out.Append("        // TODO: Warning - this method won't work in the case the id fields are not set"); //66:1
+            __out.AppendLine(false); //66:88
             bool __tmp55_outputWritten = false;
-            string __tmp56_line = "        if (!(object instanceof "; //66:1
+            string __tmp56_line = "        if (!(object instanceof "; //67:1
             if (!string.IsNullOrEmpty(__tmp56_line))
             {
                 __out.Append(__tmp56_line);
@@ -591,7 +592,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp57_last) __out.AppendLine(true);
                 }
             }
-            string __tmp58_line = ")) {"; //66:41
+            string __tmp58_line = ")) {"; //67:41
             if (!string.IsNullOrEmpty(__tmp58_line))
             {
                 __out.Append(__tmp58_line);
@@ -600,14 +601,14 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             if (__tmp55_outputWritten) __out.AppendLine(true);
             if (__tmp55_outputWritten)
             {
-                __out.AppendLine(false); //66:45
+                __out.AppendLine(false); //67:45
             }
-            __out.Append("            return false;"); //67:1
-            __out.AppendLine(false); //67:26
-            __out.Append("        }"); //68:1
-            __out.AppendLine(false); //68:10
+            __out.Append("            return false;"); //68:1
+            __out.AppendLine(false); //68:26
+            __out.Append("        }"); //69:1
+            __out.AppendLine(false); //69:10
             bool __tmp60_outputWritten = false;
-            string __tmp59Prefix = "        "; //69:1
+            string __tmp59Prefix = "        "; //70:1
             StringBuilder __tmp61 = new StringBuilder();
             __tmp61.Append(e.Name);
             using(StreamReader __tmp61Reader = new StreamReader(this.__ToStream(__tmp61.ToString())))
@@ -630,7 +631,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp61_last) __out.AppendLine(true);
                 }
             }
-            string __tmp62_line = " other = ("; //69:17
+            string __tmp62_line = " other = ("; //70:17
             if (!string.IsNullOrEmpty(__tmp62_line))
             {
                 __out.Append(__tmp62_line);
@@ -653,7 +654,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp63_last) __out.AppendLine(true);
                 }
             }
-            string __tmp64_line = ") object;"; //69:35
+            string __tmp64_line = ") object;"; //70:35
             if (!string.IsNullOrEmpty(__tmp64_line))
             {
                 __out.Append(__tmp64_line);
@@ -662,25 +663,25 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             if (__tmp60_outputWritten) __out.AppendLine(true);
             if (__tmp60_outputWritten)
             {
-                __out.AppendLine(false); //69:44
+                __out.AppendLine(false); //70:44
             }
-            __out.Append("        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {"); //70:1
-            __out.AppendLine(false); //70:103
-            __out.Append("            return false;"); //71:1
-            __out.AppendLine(false); //71:26
-            __out.Append("        }"); //72:1
-            __out.AppendLine(false); //72:10
-            __out.Append("        return true;"); //73:1
-            __out.AppendLine(false); //73:21
-            __out.Append("    }"); //74:1
-            __out.AppendLine(false); //74:6
-            __out.AppendLine(true); //75:1
-            __out.Append("    @Override"); //76:1
-            __out.AppendLine(false); //76:14
-            __out.Append("    public String toString() {"); //77:1
-            __out.AppendLine(false); //77:31
+            __out.Append("        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {"); //71:1
+            __out.AppendLine(false); //71:103
+            __out.Append("            return false;"); //72:1
+            __out.AppendLine(false); //72:26
+            __out.Append("        }"); //73:1
+            __out.AppendLine(false); //73:10
+            __out.Append("        return true;"); //74:1
+            __out.AppendLine(false); //74:21
+            __out.Append("    }"); //75:1
+            __out.AppendLine(false); //75:6
+            __out.AppendLine(true); //76:1
+            __out.Append("    @Override"); //77:1
+            __out.AppendLine(false); //77:14
+            __out.Append("    public String toString() {"); //78:1
+            __out.AppendLine(false); //78:31
             bool __tmp66_outputWritten = false;
-            string __tmp67_line = "        return \""; //78:1
+            string __tmp67_line = "        return \""; //79:1
             if (!string.IsNullOrEmpty(__tmp67_line))
             {
                 __out.Append(__tmp67_line);
@@ -703,7 +704,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp68_last) __out.AppendLine(true);
                 }
             }
-            string __tmp69_line = "."; //78:35
+            string __tmp69_line = "."; //79:35
             if (!string.IsNullOrEmpty(__tmp69_line))
             {
                 __out.Append(__tmp69_line);
@@ -743,7 +744,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp71_last) __out.AppendLine(true);
                 }
             }
-            string __tmp72_line = " id=\" + id + \" "; //78:49
+            string __tmp72_line = " id=\" + id + \" "; //79:49
             if (!string.IsNullOrEmpty(__tmp72_line))
             {
                 __out.Append(__tmp72_line);
@@ -766,7 +767,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp73_last) __out.AppendLine(true);
                 }
             }
-            string __tmp74_line = "\";"; //78:69
+            string __tmp74_line = "\";"; //79:69
             if (!string.IsNullOrEmpty(__tmp74_line))
             {
                 __out.Append(__tmp74_line);
@@ -775,21 +776,21 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             if (__tmp66_outputWritten) __out.AppendLine(true);
             if (__tmp66_outputWritten)
             {
-                __out.AppendLine(false); //78:71
+                __out.AppendLine(false); //79:71
             }
-            __out.Append("    }"); //79:1
-            __out.AppendLine(false); //79:6
-            __out.AppendLine(true); //80:1
-            __out.Append("}"); //81:1
-            __out.AppendLine(false); //81:2
+            __out.Append("    }"); //80:1
+            __out.AppendLine(false); //80:6
+            __out.AppendLine(true); //81:1
+            __out.Append("}"); //82:1
+            __out.AppendLine(false); //82:2
             return __out.ToString();
         }
 
-        public string GenerateEnum(MetaDslx.Languages.Soal.Symbols.Enum en) //84:1
+        public string GenerateEnum(MetaDslx.Languages.Soal.Symbols.Enum en) //85:1
         {
             StringBuilder __out = new StringBuilder();
             bool __tmp2_outputWritten = false;
-            string __tmp3_line = "package "; //85:1
+            string __tmp3_line = "package "; //86:1
             if (!string.IsNullOrEmpty(__tmp3_line))
             {
                 __out.Append(__tmp3_line);
@@ -812,7 +813,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp4_last) __out.AppendLine(true);
                 }
             }
-            string __tmp5_line = ";"; //85:38
+            string __tmp5_line = ";"; //86:38
             if (!string.IsNullOrEmpty(__tmp5_line))
             {
                 __out.Append(__tmp5_line);
@@ -821,11 +822,11 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             if (__tmp2_outputWritten) __out.AppendLine(true);
             if (__tmp2_outputWritten)
             {
-                __out.AppendLine(false); //85:39
+                __out.AppendLine(false); //86:39
             }
-            __out.AppendLine(true); //86:1
+            __out.AppendLine(true); //87:1
             bool __tmp7_outputWritten = false;
-            string __tmp8_line = "public enum "; //87:1
+            string __tmp8_line = "public enum "; //88:1
             if (!string.IsNullOrEmpty(__tmp8_line))
             {
                 __out.Append(__tmp8_line);
@@ -848,7 +849,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp9_last) __out.AppendLine(true);
                 }
             }
-            string __tmp10_line = " {"; //87:22
+            string __tmp10_line = " {"; //88:22
             if (!string.IsNullOrEmpty(__tmp10_line))
             {
                 __out.Append(__tmp10_line);
@@ -857,19 +858,19 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             if (__tmp7_outputWritten) __out.AppendLine(true);
             if (__tmp7_outputWritten)
             {
-                __out.AppendLine(false); //87:24
+                __out.AppendLine(false); //88:24
             }
-            int i = 0; //88:3
+            int i = 0; //89:3
             var __loop3_results = 
-                (from iprop in __Enumerate((en.MChildren).GetEnumerator()) //89:8
+                (from iprop in __Enumerate((en.MChildren).GetEnumerator()) //90:8
                 select new { iprop = iprop}
-                ).ToList(); //89:3
+                ).ToList(); //90:3
             for (int __loop3_iteration = 0; __loop3_iteration < __loop3_results.Count; ++__loop3_iteration)
             {
                 var __tmp11 = __loop3_results[__loop3_iteration];
                 var iprop = __tmp11.iprop;
                 bool __tmp13_outputWritten = false;
-                string __tmp12Prefix = "	"; //90:1
+                string __tmp12Prefix = "	"; //91:1
                 StringBuilder __tmp14 = new StringBuilder();
                 __tmp14.Append(aC(iprop.MName));
                 using(StreamReader __tmp14Reader = new StreamReader(this.__ToStream(__tmp14.ToString())))
@@ -892,9 +893,9 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp14_last) __out.AppendLine(true);
                     }
                 }
-                if (i != en.MChildren.Count - 1) //90:20
+                if (i != en.MChildren.Count - 1) //91:20
                 {
-                    string __tmp16_line = ","; //90:48
+                    string __tmp16_line = ","; //91:48
                     if (!string.IsNullOrEmpty(__tmp16_line))
                     {
                         __out.Append(__tmp16_line);
@@ -904,88 +905,88 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                 if (__tmp13_outputWritten) __out.AppendLine(true);
                 if (__tmp13_outputWritten)
                 {
-                    __out.AppendLine(false); //90:57
+                    __out.AppendLine(false); //91:57
                 }
                 i = i + 1;
             }
-            __out.Append("}"); //93:1
-            __out.AppendLine(false); //93:2
+            __out.Append("}"); //94:1
+            __out.AppendLine(false); //94:2
             return __out.ToString();
         }
 
-        public string addAttributeImports(Struct e) //96:1
+        public string addAttributeImports(Struct e) //97:1
         {
             StringBuilder __out = new StringBuilder();
             var __loop4_results = 
-                (from iprop in __Enumerate((e.Properties).GetEnumerator()) //97:8
+                (from iprop in __Enumerate((e.Properties).GetEnumerator()) //98:8
                 select new { iprop = iprop}
-                ).ToList(); //97:3
+                ).ToList(); //98:3
             for (int __loop4_iteration = 0; __loop4_iteration < __loop4_results.Count; ++__loop4_iteration)
             {
                 var __tmp1 = __loop4_results[__loop4_iteration];
                 var iprop = __tmp1.iprop;
-                if (iprop.Type.MMetaClass.Name.Equals("ArrayType")) //98:4
+                if (iprop.Type.MMetaClass.Name.Equals("ArrayType")) //99:4
                 {
                 }
-                else if (iprop.Type.MName.Equals("TimeSpan")) //100:4
+                else if (iprop.Type.MName.Equals("TimeSpan")) //101:4
                 {
                 }
             }
             return __out.ToString();
         }
 
-        public string addAttributeAnnotations(Struct mainEntity, Property mainProp, ImmutableModelList<Struct> allEntities) //107:1
+        public string addAttributeAnnotations(Struct mainEntity, Property mainProp, ImmutableModelList<Struct> allEntities) //108:1
         {
             StringBuilder __out = new StringBuilder();
-            bool fromOne = false; //108:3
-            bool fromMany = false; //109:3
-            bool toOne = false; //110:3
-            bool toMany = false; //111:3
-            bool isJoin = false; //112:3
-            String mappedBy = null; //113:3
-            if (mainProp.Type != null) //114:3
+            bool fromOne = false; //109:3
+            bool fromMany = false; //110:3
+            bool toOne = false; //111:3
+            bool toMany = false; //112:3
+            bool isJoin = false; //113:3
+            String mappedBy = null; //114:3
+            if (mainProp.Type != null) //115:3
             {
-                if (mainProp.Type.MName != null) //115:4
+                if (mainProp.Type.MName != null) //116:4
                 {
-                    if (mainProp.Type.MName.Equals("TimeSpan")) //116:5
+                    if (mainProp.Type.MName.Equals("TimeSpan")) //117:5
                     {
-                        __out.Append("@Temporal(TemporalType.TIMESTAMP)"); //117:1
-                        __out.AppendLine(false); //117:34
+                        __out.Append("@Temporal(TemporalType.TIMESTAMP)"); //118:1
+                        __out.AppendLine(false); //118:34
                     }
-                    else if (false) //118:5
+                    else if (false) //119:5
                     {
                     }
-                    else //119:5
+                    else //120:5
                     {
                     }
                 }
-                if (true) //123:4
+                if (true) //124:4
                 {
                     var __loop5_results = 
-                        (from entity in __Enumerate((allEntities).GetEnumerator()) //124:10
+                        (from entity in __Enumerate((allEntities).GetEnumerator()) //125:10
                         select new { entity = entity}
-                        ).ToList(); //124:5
+                        ).ToList(); //125:5
                     for (int __loop5_iteration = 0; __loop5_iteration < __loop5_results.Count; ++__loop5_iteration)
                     {
                         var __tmp1 = __loop5_results[__loop5_iteration];
                         var entity = __tmp1.entity;
                         var __loop6_results = 
-                            (from eprop in __Enumerate((entity.Properties).GetEnumerator()) //125:11
+                            (from eprop in __Enumerate((entity.Properties).GetEnumerator()) //126:11
                             select new { eprop = eprop}
-                            ).ToList(); //125:6
+                            ).ToList(); //126:6
                         for (int __loop6_iteration = 0; __loop6_iteration < __loop6_results.Count; ++__loop6_iteration)
                         {
                             var __tmp2 = __loop6_results[__loop6_iteration];
                             var eprop = __tmp2.eprop;
-                            if (eprop.Type.MName != null && eprop.Type.MName.Equals(mainEntity.Name)) //126:7
+                            if (eprop.Type.MName != null && eprop.Type.MName.Equals(mainEntity.Name)) //127:7
                             {
                                 fromOne = true;
                                 mappedBy = eprop.Name;
                             }
-                            else if (eprop.Type.MMetaClass.MName.Equals("ArrayType")) //129:7
+                            else if (eprop.Type.MMetaClass.MName.Equals("ArrayType")) //130:7
                             {
-                                ArrayType at = (ArrayType)eprop.Type; //130:8
-                                if (at.InnerType != null && at.InnerType.MName.Equals(mainEntity.Name)) //131:8
+                                ArrayType at = (ArrayType)eprop.Type; //131:8
+                                if (at.InnerType != null && at.InnerType.MName.Equals(mainEntity.Name)) //132:8
                                 {
                                     fromMany = true;
                                     mappedBy = eprop.Name;
@@ -994,36 +995,36 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         }
                     }
                     var __loop7_results = 
-                        (from entity in __Enumerate((allEntities).GetEnumerator()) //138:10
+                        (from entity in __Enumerate((allEntities).GetEnumerator()) //139:10
                         select new { entity = entity}
-                        ).ToList(); //138:5
+                        ).ToList(); //139:5
                     for (int __loop7_iteration = 0; __loop7_iteration < __loop7_results.Count; ++__loop7_iteration)
                     {
                         var __tmp3 = __loop7_results[__loop7_iteration];
                         var entity = __tmp3.entity;
-                        if (mainProp.Type.MName != null && mainProp.Type.MName.Equals(entity.Name)) //139:6
+                        if (mainProp.Type.MName != null && mainProp.Type.MName.Equals(entity.Name)) //140:6
                         {
                             toOne = true;
                         }
-                        else if (mainProp.Type.MMetaClass.MName.Equals("ArrayType")) //141:6
+                        else if (mainProp.Type.MMetaClass.MName.Equals("ArrayType")) //142:6
                         {
-                            ArrayType at = (ArrayType)mainProp.Type; //142:7
-                            if (at.InnerType != null && at.InnerType.MName.Equals(entity.Name)) //143:7
+                            ArrayType at = (ArrayType)mainProp.Type; //143:7
+                            if (at.InnerType != null && at.InnerType.MName.Equals(entity.Name)) //144:7
                             {
                                 toMany = true;
                             }
                         }
                     }
                     isJoin = (toOne || toMany || fromOne || fromMany);
-                    if (false) //149:5
+                    if (false) //150:5
                     {
                     }
-                    else if (fromOne && toOne) //150:5
+                    else if (fromOne && toOne) //151:5
                     {
-                        __out.Append("@OneToOne"); //151:1
-                        __out.AppendLine(false); //151:10
+                        __out.Append("@OneToOne"); //152:1
+                        __out.AppendLine(false); //152:10
                         bool __tmp5_outputWritten = false;
-                        string __tmp6_line = "@JoinColumn(name = \""; //152:1
+                        string __tmp6_line = "@JoinColumn(name = \""; //153:1
                         if (!string.IsNullOrEmpty(__tmp6_line))
                         {
                             __out.Append(__tmp6_line);
@@ -1046,7 +1047,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                                 if (!__tmp7_last) __out.AppendLine(true);
                             }
                         }
-                        string __tmp8_line = "\")"; //152:40
+                        string __tmp8_line = "\")"; //153:40
                         if (!string.IsNullOrEmpty(__tmp8_line))
                         {
                             __out.Append(__tmp8_line);
@@ -1055,13 +1056,13 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (__tmp5_outputWritten) __out.AppendLine(true);
                         if (__tmp5_outputWritten)
                         {
-                            __out.AppendLine(false); //152:42
+                            __out.AppendLine(false); //153:42
                         }
                     }
-                    else if (fromOne && toMany) //153:5
+                    else if (fromOne && toMany) //154:5
                     {
                         bool __tmp10_outputWritten = false;
-                        string __tmp11_line = "@OneToMany(mappedBy=\""; //154:1
+                        string __tmp11_line = "@OneToMany(mappedBy=\""; //155:1
                         if (!string.IsNullOrEmpty(__tmp11_line))
                         {
                             __out.Append(__tmp11_line);
@@ -1084,7 +1085,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                                 if (!__tmp12_last) __out.AppendLine(true);
                             }
                         }
-                        string __tmp13_line = "\")"; //154:32
+                        string __tmp13_line = "\")"; //155:32
                         if (!string.IsNullOrEmpty(__tmp13_line))
                         {
                             __out.Append(__tmp13_line);
@@ -1093,10 +1094,10 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (__tmp10_outputWritten) __out.AppendLine(true);
                         if (__tmp10_outputWritten)
                         {
-                            __out.AppendLine(false); //154:34
+                            __out.AppendLine(false); //155:34
                         }
                         bool __tmp15_outputWritten = false;
-                        string __tmp16_line = "@JoinColumn(name = \""; //155:1
+                        string __tmp16_line = "@JoinColumn(name = \""; //156:1
                         if (!string.IsNullOrEmpty(__tmp16_line))
                         {
                             __out.Append(__tmp16_line);
@@ -1119,7 +1120,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                                 if (!__tmp17_last) __out.AppendLine(true);
                             }
                         }
-                        string __tmp18_line = "\")"; //155:40
+                        string __tmp18_line = "\")"; //156:40
                         if (!string.IsNullOrEmpty(__tmp18_line))
                         {
                             __out.Append(__tmp18_line);
@@ -1128,15 +1129,15 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (__tmp15_outputWritten) __out.AppendLine(true);
                         if (__tmp15_outputWritten)
                         {
-                            __out.AppendLine(false); //155:42
+                            __out.AppendLine(false); //156:42
                         }
                     }
-                    else if (fromMany && toOne) //156:5
+                    else if (fromMany && toOne) //157:5
                     {
-                        __out.Append("@ManyToOne"); //157:1
-                        __out.AppendLine(false); //157:11
+                        __out.Append("@ManyToOne"); //158:1
+                        __out.AppendLine(false); //158:11
                         bool __tmp20_outputWritten = false;
-                        string __tmp21_line = "@JoinColumn(name = \""; //158:1
+                        string __tmp21_line = "@JoinColumn(name = \""; //159:1
                         if (!string.IsNullOrEmpty(__tmp21_line))
                         {
                             __out.Append(__tmp21_line);
@@ -1159,7 +1160,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                                 if (!__tmp22_last) __out.AppendLine(true);
                             }
                         }
-                        string __tmp23_line = "\")"; //158:40
+                        string __tmp23_line = "\")"; //159:40
                         if (!string.IsNullOrEmpty(__tmp23_line))
                         {
                             __out.Append(__tmp23_line);
@@ -1168,15 +1169,15 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (__tmp20_outputWritten) __out.AppendLine(true);
                         if (__tmp20_outputWritten)
                         {
-                            __out.AppendLine(false); //158:42
+                            __out.AppendLine(false); //159:42
                         }
                     }
-                    else if (fromMany && toMany) //159:5
+                    else if (fromMany && toMany) //160:5
                     {
-                        __out.Append("@ManyToMany"); //160:1
-                        __out.AppendLine(false); //160:12
+                        __out.Append("@ManyToMany"); //161:1
+                        __out.AppendLine(false); //161:12
                         bool __tmp25_outputWritten = false;
-                        string __tmp26_line = "@JoinColumn(name = \""; //161:1
+                        string __tmp26_line = "@JoinColumn(name = \""; //162:1
                         if (!string.IsNullOrEmpty(__tmp26_line))
                         {
                             __out.Append(__tmp26_line);
@@ -1199,7 +1200,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                                 if (!__tmp27_last) __out.AppendLine(true);
                             }
                         }
-                        string __tmp28_line = "\")"; //161:40
+                        string __tmp28_line = "\")"; //162:40
                         if (!string.IsNullOrEmpty(__tmp28_line))
                         {
                             __out.Append(__tmp28_line);
@@ -1208,13 +1209,13 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (__tmp25_outputWritten) __out.AppendLine(true);
                         if (__tmp25_outputWritten)
                         {
-                            __out.AppendLine(false); //161:42
+                            __out.AppendLine(false); //162:42
                         }
                     }
-                    else //162:5
+                    else //163:5
                     {
                         bool __tmp30_outputWritten = false;
-                        string __tmp31_line = "@Column(name = \""; //163:1
+                        string __tmp31_line = "@Column(name = \""; //164:1
                         if (!string.IsNullOrEmpty(__tmp31_line))
                         {
                             __out.Append(__tmp31_line);
@@ -1237,7 +1238,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                                 if (!__tmp32_last) __out.AppendLine(true);
                             }
                         }
-                        string __tmp33_line = "\")"; //163:36
+                        string __tmp33_line = "\")"; //164:36
                         if (!string.IsNullOrEmpty(__tmp33_line))
                         {
                             __out.Append(__tmp33_line);
@@ -1246,7 +1247,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (__tmp30_outputWritten) __out.AppendLine(true);
                         if (__tmp30_outputWritten)
                         {
-                            __out.AppendLine(false); //163:38
+                            __out.AppendLine(false); //164:38
                         }
                     }
                 }
@@ -1254,49 +1255,19 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             return __out.ToString();
         }
 
-        public string aC(String attributeName) //170:1
+        public string aC(String attributeName) //171:1
         {
-            return Char.ToLowerInvariant(attributeName[0]) + attributeName.Substring(1); //171:2
+            return JavaConventionHelper.attributeNameConvention(attributeName); //172:2
         }
 
-        public string cC(String columnName) //174:1
+        public string cC(String columnName) //175:1
         {
-            return columnName.ToUpper(); //175:2
+            return JavaConventionHelper.databaseColumnNameConvention(columnName); //176:2
         }
 
-        public string tC(SoalType t) //178:1
+        public string tC(SoalType t) //179:1
         {
-            if (t.MName != null) //179:2
-            {
-                if (t.MName.Equals("TimeSpan")) //180:3
-                {
-                    return "Date"; //181:4
-                }
-                else if (t.MName.Equals("string")) //182:3
-                {
-                    return "String"; //183:4
-                }
-                else if (t.MName.Equals("DateTime")) //184:3
-                {
-                    return "Date"; //185:4
-                }
-                else //186:3
-                {
-                    return t.MName; //187:4
-                }
-            }
-            else //189:2
-            {
-                ArrayType at = (ArrayType)t; //190:3
-                if (at.MMetaClass.Name.Equals("ArrayType") && at.InnerType != null && !at.InnerType.MName.Equals(null)) //191:3
-                {
-                    return "List<" + at.InnerType.MName + ">"; //192:4
-                }
-                else //193:3
-                {
-                    return ""; //194:4
-                }
-            }
+            return JavaConventionHelper.classNameConvention(t); //180:2
         }
 
         private class StringBuilder

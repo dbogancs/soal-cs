@@ -240,7 +240,7 @@ namespace MetaDslx.Languages.Soal
                         writer.WriteLine(wsdlGen.Generate(ns));
                     }
 
-                    JavaEeGenerationHelper.generateJavaEe(ns, this.OutputDirectory);
+                    JavaEeGenerationHelper.GenerateJavaEe(ns, this.OutputDirectory);
                 }
             }
         }

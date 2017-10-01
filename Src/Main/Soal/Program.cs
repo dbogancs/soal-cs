@@ -73,7 +73,7 @@ namespace Soal
                 }
                 if (!File.Exists(fileName))
                 {
-                    Console.WriteLine("Could not find file: "+fileName);
+                    Console.WriteLine("Could not find this file: "+fileName);
                     return;
                 }
                 if (singleFileWsdl && separateXsdWsdl)

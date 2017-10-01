@@ -61,6 +61,29 @@
     <Compile Include="Compilation\SoalParseOptions.cs" />
     <Compile Include="Compilation\SoalScriptCompilationInfo.cs" />
     <Compile Include="Errors\SoalErrorCode.cs" />
+    <Compile Include="Generator\Java\JavaConventionHelper.cs" />
+    <Compile Include="Generator\Java\JavaEeGenerationHelper.cs" />
+    <Compile Include="Generator\Java\JavaEeGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JavaEeGenerator.mgen</DependentUpon>
+    </Compile>
+    <Compile Include="Generator\Java\PersistenceXmlGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PersistenceXmlGenerator.mgen</DependentUpon>
+    </Compile>
+    <Compile Include="Generator\Java\PomXmlGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PomXmlGenerator.mgen</DependentUpon>
+    </Compile>
+    <Compile Include="Generator\Java\PomXmlIdentifier.cs" />
+    <Compile Include="Generator\Sample.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sample.mgen</DependentUpon>
+    </Compile>
     <Compile Include="Generator\SoalGenerator.cs" />
     <Compile Include="Generator\SoalGeneratorErrorCode.cs" />
     <Compile Include="Generator\SoalPrinter.cs">
@@ -122,6 +145,22 @@
     <Compile Include="Syntax\SoalSyntaxTree.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Generator\Java\JavaEeGenerator.mgen">
+      <Generator>MetaGenerator</Generator>
+      <LastGenOutput>JavaEeGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generator\Java\PersistenceXmlGenerator.mgen">
+      <Generator>MetaGenerator</Generator>
+      <LastGenOutput>PersistenceXmlGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generator\Java\PomXmlGenerator.mgen">
+      <Generator>MetaGenerator</Generator>
+      <LastGenOutput>PomXmlGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generator\Sample.mgen">
+      <Generator>MetaGenerator</Generator>
+      <LastGenOutput>Sample.cs</LastGenOutput>
+    </None>
     <None Include="Generator\SoalPrinter.mgen">
       <Generator>MetaGenerator</Generator>
       <LastGenOutput>SoalPrinter.cs</LastGenOutput>

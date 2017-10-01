@@ -2,6 +2,7 @@
 generator PersistenceXmlGenerator for object;
 
 using System.Collections;
+using MetaDslx.Languages.Soal.Generator.Java;
 
 template Generate(String persistenceUnit, IEnumerable<String> classes, String url, String username, String password)
 <?xml version="1.0" encoding="UTF-8"?>
@@ -9,7 +10,7 @@ template Generate(String persistenceUnit, IEnumerable<String> classes, String ur
 	<persistence-unit name="[persistenceUnit]" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 [loop(ins:classes)]
-		<class>[classFullNamePackageConvention(ins)]</class>
+		<class>[cC(ins)]</class>
 [end loop]
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="[url]"/>
@@ -22,8 +23,6 @@ template Generate(String persistenceUnit, IEnumerable<String> classes, String ur
 </persistence>
 end template
 
-function string classFullNamePackageConvention(String fullName)
-	String className = fullName.Split('.').Last();
-	int splitIndex = fullName.LastIndexOf(".");
-	return fullName.Substring(0,splitIndex).ToLower() +"."+ className;
+function string cC(String fullName)
+	return JavaConventionHelper.classFullNamePackageConvention(fullName);
 end function

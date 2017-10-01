@@ -2,6 +2,7 @@
 generator JavaEeGenerator for object;
 
 using MetaDslx.Languages.Soal.Symbols;
+using MetaDslx.Languages.Soal.Generator.Java;
 using MetaDslx.Core;
 
 
@@ -168,30 +169,13 @@ end template
 
 
 function string aC(String attributeName)
-	return Char.ToLowerInvariant(attributeName[0]) + attributeName.Substring(1);
+	return JavaConventionHelper.attributeNameConvention(attributeName);
 end function
 
 function string cC(String columnName)
-	return columnName.ToUpper();
+	return JavaConventionHelper.databaseColumnNameConvention(columnName);
 end function
 
 function string tC(SoalType t)
-	if (t.MName != null)
-		if (t.MName.Equals("TimeSpan"))
-			return "Date";
-		else if (t.MName.Equals("string"))
-			return "String";
-		else if (t.MName.Equals("DateTime"))
-			return "Date";
-		else
-			return t.MName;
-		end if
-	else
-		ArrayType at = (ArrayType) t; 
-		if (at.MMetaClass.Name.Equals("ArrayType") && at.InnerType!=null && !at.InnerType.MName.Equals(null)) 
-			return "List<" + at.InnerType.MName + ">";
-		else
-			return "";
-		end if
-	end if
+	return JavaConventionHelper.classNameConvention(t);
 end function
