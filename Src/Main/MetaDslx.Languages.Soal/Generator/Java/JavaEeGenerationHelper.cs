@@ -57,7 +57,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java
                 PomXmlIdentifier project = new PomXmlIdentifier();
                 project.groupId = composite.MName;
                 project.artifactId = component.MName;
-                project.version = "1.0";
+                project.version = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.PROJECT_VERSION);
                 PomXmlIdentifier server = null;
                 //PomXmlIdentifier = new List<String>();
                 //server.groupId = "org.wildfly.plugins";
@@ -65,14 +65,14 @@ namespace MetaDslx.Languages.Soal.Generator.Java
                 //server.version = "10.1.0.Final";
                 List<PomXmlIdentifier> dependencies = new List<PomXmlIdentifier>();
                 PomXmlIdentifier junitDep = new PomXmlIdentifier();
-                junitDep.groupId = "junit";
-                junitDep.artifactId = "junit";
-                junitDep.version = "3.8.1";
+                junitDep.groupId = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.JUNIT_DEPENDENCY_GROUPID);
+                junitDep.artifactId = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.JUNIT_DEPENDENCY_ARTIFACTID);
+                junitDep.version = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.JUNIT_DEPENDENCY_VERSION);
                 PomXmlIdentifier jpaDep = new PomXmlIdentifier();
-                jpaDep.groupId = "org.hibernate.javax.persistence";
-                jpaDep.artifactId = "hibernate-jpa-2.0-api";
-                jpaDep.version = "1.0.1.Final";
-                
+                jpaDep.groupId = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.JPA_DEPENDENCY_GROUPID);
+                jpaDep.artifactId = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.JPA_DEPENDENCY_ARTIFACTID);
+                jpaDep.version = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.JPA_DEPENDENCY_VERSION);
+
                 dependencies.Add(junitDep);
                 dependencies.Add(jpaDep);
                 PomXmlGenerator pomGen = new PomXmlGenerator();
@@ -152,7 +152,15 @@ namespace MetaDslx.Languages.Soal.Generator.Java
                                         PrintJpaEntity(entity, currentProjectJava, db.Entities);
                                     }
                                     Directory.CreateDirectory(currentProjectMETAINF);
-                                    PrintPersistenceXml("SampleDBPU", classes, "jdbc: derby://localhost:1527/cinema_database","username","password", currentProjectMETAINF);
+                                    PrintPersistenceXml
+                                        (
+                                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_PERSISTENCE_UNIT),
+                                        classes,
+                                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_URL),
+                                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_USERNAME),
+                                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_PASSWORD),
+                                        currentProjectMETAINF
+                                        );
                                 }
                             }
 

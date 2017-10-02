@@ -68,6 +68,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>JavaEeGenerator.mgen</DependentUpon>
     </Compile>
+    <Compile Include="Generator\Java\JavaEeTestConfigReader.cs" />
+    <Compile Include="Generator\Java\JavaEeTestConstants.cs" />
     <Compile Include="Generator\Java\PersistenceXmlGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
