@@ -28,6 +28,8 @@ namespace MetaDslx.Languages.Soal.Generator.Java
         public static readonly string JPA_DEPENDENCY_VERSION = "jpa_dependency_version";
 
         public static readonly string DATABASE_PERSISTENCE_UNIT = "database_persistence_unit";
+        public static readonly string DATABASE_PERSISTENCE_UNIT_PROVIDER = "database_persistence_unit_provider";
+
         public static readonly string DATABASE_URL_PROP_VALUE = "database_url_prop_value";
         public static readonly string DATABASE_USERNAME_PROP_VALUE = "database_username_prop_value";
         public static readonly string DATABASE_PASSWORD_PROP_VALUE = "database_password_prop_value";
