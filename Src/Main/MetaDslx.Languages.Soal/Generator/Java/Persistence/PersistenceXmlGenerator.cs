@@ -9,8 +9,8 @@ using MetaDslx.Languages.Soal.Generator.Java; //5:1
 
 namespace MetaDslx.Languages.Soal.Generator.Java //1:1
 {
-    using __Hidden_PersistenceXmlGenerator_1845305685;
-    namespace __Hidden_PersistenceXmlGenerator_1845305685
+    using __Hidden_PersistenceXmlGenerator_1826432529;
+    namespace __Hidden_PersistenceXmlGenerator_1826432529
     {
         internal static class __Extensions
         {

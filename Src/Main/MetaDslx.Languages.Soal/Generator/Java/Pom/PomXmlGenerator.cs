@@ -9,8 +9,8 @@ using MetaDslx.Languages.Soal.Generator.Java; //5:1
 
 namespace MetaDslx.Languages.Soal.Generator.Java //1:1
 {
-    using __Hidden_PomXmlGenerator_192260266;
-    namespace __Hidden_PomXmlGenerator_192260266
+    using __Hidden_PomXmlGenerator_264985425;
+    namespace __Hidden_PomXmlGenerator_264985425
     {
         internal static class __Extensions
         {

@@ -62,26 +62,28 @@
     <Compile Include="Compilation\SoalScriptCompilationInfo.cs" />
     <Compile Include="Errors\SoalErrorCode.cs" />
     <Compile Include="Generator\Java\JavaConventionHelper.cs" />
-    <Compile Include="Generator\Java\JavaEeGenerationHelper.cs" />
-    <Compile Include="Generator\Java\JavaEeGenerator.cs">
+    <Compile Include="Generator\Java\JavaEE\JavaEeGenerationHelper.cs" />
+    <Compile Include="Generator\Java\JavaEE\JavaEeGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>JavaEeGenerator.mgen</DependentUpon>
     </Compile>
-    <Compile Include="Generator\Java\JavaEeTestConfigHandler.cs" />
-    <Compile Include="Generator\Java\JavaEeTestConstants.cs" />
-    <Compile Include="Generator\Java\PersistenceXmlGenerator.cs">
+    <Compile Include="Generator\Java\JavaEE\JavaEePrinter.cs" />
+    <Compile Include="Generator\Java\Test\JavaEeTestConfigHandler.cs" />
+    <Compile Include="Generator\Java\Test\JavaEeTestConstants.cs" />
+    <Compile Include="Generator\Java\MavenProjectStructure.cs" />
+    <Compile Include="Generator\Java\Persistence\PersistenceXmlGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PersistenceXmlGenerator.mgen</DependentUpon>
     </Compile>
-    <Compile Include="Generator\Java\PersistenceXmlProperty.cs" />
-    <Compile Include="Generator\Java\PomXmlGenerator.cs">
+    <Compile Include="Generator\Java\Persistence\PersistenceXmlProperty.cs" />
+    <Compile Include="Generator\Java\Pom\PomXmlGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PomXmlGenerator.mgen</DependentUpon>
     </Compile>
-    <Compile Include="Generator\Java\PomXmlIdentifier.cs" />
+    <Compile Include="Generator\Java\Pom\PomXmlIdentifier.cs" />
     <Compile Include="Generator\Sample.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,15 +150,15 @@
     <Compile Include="Syntax\SoalSyntaxTree.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Generator\Java\JavaEeGenerator.mgen">
+    <None Include="Generator\Java\JavaEE\JavaEeGenerator.mgen">
       <Generator>MetaGenerator</Generator>
       <LastGenOutput>JavaEeGenerator.cs</LastGenOutput>
     </None>
-    <None Include="Generator\Java\PersistenceXmlGenerator.mgen">
+    <None Include="Generator\Java\Persistence\PersistenceXmlGenerator.mgen">
       <Generator>MetaGenerator</Generator>
       <LastGenOutput>PersistenceXmlGenerator.cs</LastGenOutput>
     </None>
-    <None Include="Generator\Java\PomXmlGenerator.mgen">
+    <None Include="Generator\Java\Pom\PomXmlGenerator.mgen">
       <Generator>MetaGenerator</Generator>
       <LastGenOutput>PomXmlGenerator.cs</LastGenOutput>
     </None>

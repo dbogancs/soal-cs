@@ -10,8 +10,8 @@ using MetaDslx.Core; //6:1
 
 namespace MetaDslx.Languages.Soal.Generator.Java //1:1
 {
-    using __Hidden_JavaEeGenerator_203315240;
-    namespace __Hidden_JavaEeGenerator_203315240
+    using __Hidden_JavaEeGenerator_1670084978;
+    namespace __Hidden_JavaEeGenerator_1670084978
     {
         internal static class __Extensions
         {

@@ -10,7 +10,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java
     static class JavaEeTestConfigHandler
     {
         static public bool testOn;
-        static private Dictionary<String, String> config;
+        static private Dictionary<string, string> config;
         static private bool firstRun = true;
 
         static public string getValue(string key)
@@ -29,9 +29,9 @@ namespace MetaDslx.Languages.Soal.Generator.Java
             return value;
         }
 
-        static private Dictionary<String, String> read()
+        static private Dictionary<string, string> read()
         {
-            Dictionary<String, String> config = new Dictionary<string, string>();
+            Dictionary<string, string> config = new Dictionary<string, string>();
 
             try
             {
