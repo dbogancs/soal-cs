@@ -9,8 +9,8 @@ namespace MetaDslx.Languages.Soal.Generator.Java
 {
     static class JavaEeTestConfigHandler
     {
+        static public bool testOn;
         static private Dictionary<String, String> config;
-        static private bool testOn;
         static private bool firstRun = true;
 
         static public string getValue(string key)

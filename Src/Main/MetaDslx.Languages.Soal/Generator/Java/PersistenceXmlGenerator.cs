@@ -9,8 +9,8 @@ using MetaDslx.Languages.Soal.Generator.Java; //5:1
 
 namespace MetaDslx.Languages.Soal.Generator.Java //1:1
 {
-    using __Hidden_PersistenceXmlGenerator_16043486;
-    namespace __Hidden_PersistenceXmlGenerator_16043486
+    using __Hidden_PersistenceXmlGenerator_1640531795;
+    namespace __Hidden_PersistenceXmlGenerator_1640531795
     {
         internal static class __Extensions
         {
@@ -60,7 +60,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             return ++counter;
         }
 
-        public string Generate(String persistenceUnit, IEnumerable<String> classes, String url, String username, String password) //7:1
+        public string Generate(String persistenceUnit, IEnumerable<String> classes, List<PersistenceXmlProperty> properties) //7:1
         {
             StringBuilder __out = new StringBuilder();
             __out.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"); //8:1
@@ -150,127 +150,85 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             }
             __out.Append("		<properties>"); //15:1
             __out.AppendLine(false); //15:15
-            bool __tmp13_outputWritten = false;
-            string __tmp14_line = "			<property name=\"javax.persistence.jdbc.url\" value=\""; //16:1
-            if (!string.IsNullOrEmpty(__tmp14_line))
+            var __loop2_results = 
+                (from prop in __Enumerate((properties).GetEnumerator()) //16:7
+                select new { prop = prop}
+                ).ToList(); //16:2
+            for (int __loop2_iteration = 0; __loop2_iteration < __loop2_results.Count; ++__loop2_iteration)
             {
-                __out.Append(__tmp14_line);
-                __tmp13_outputWritten = true;
-            }
-            StringBuilder __tmp15 = new StringBuilder();
-            __tmp15.Append(url);
-            using(StreamReader __tmp15Reader = new StreamReader(this.__ToStream(__tmp15.ToString())))
-            {
-                bool __tmp15_last = __tmp15Reader.EndOfStream;
-                while(!__tmp15_last)
+                var __tmp12 = __loop2_results[__loop2_iteration];
+                var prop = __tmp12.prop;
+                bool __tmp14_outputWritten = false;
+                string __tmp15_line = "			<property name=\""; //17:1
+                if (!string.IsNullOrEmpty(__tmp15_line))
                 {
-                    string __tmp15_line = __tmp15Reader.ReadLine();
-                    __tmp15_last = __tmp15Reader.EndOfStream;
-                    if ((__tmp15_last && !string.IsNullOrEmpty(__tmp15_line)) || (!__tmp15_last && __tmp15_line != null))
+                    __out.Append(__tmp15_line);
+                    __tmp14_outputWritten = true;
+                }
+                StringBuilder __tmp16 = new StringBuilder();
+                __tmp16.Append(prop.name);
+                using(StreamReader __tmp16Reader = new StreamReader(this.__ToStream(__tmp16.ToString())))
+                {
+                    bool __tmp16_last = __tmp16Reader.EndOfStream;
+                    while(!__tmp16_last)
                     {
-                        __out.Append(__tmp15_line);
-                        __tmp13_outputWritten = true;
+                        string __tmp16_line = __tmp16Reader.ReadLine();
+                        __tmp16_last = __tmp16Reader.EndOfStream;
+                        if ((__tmp16_last && !string.IsNullOrEmpty(__tmp16_line)) || (!__tmp16_last && __tmp16_line != null))
+                        {
+                            __out.Append(__tmp16_line);
+                            __tmp14_outputWritten = true;
+                        }
+                        if (!__tmp16_last) __out.AppendLine(true);
                     }
-                    if (!__tmp15_last) __out.AppendLine(true);
+                }
+                string __tmp17_line = "\" value=\""; //17:31
+                if (!string.IsNullOrEmpty(__tmp17_line))
+                {
+                    __out.Append(__tmp17_line);
+                    __tmp14_outputWritten = true;
+                }
+                StringBuilder __tmp18 = new StringBuilder();
+                __tmp18.Append(prop.value);
+                using(StreamReader __tmp18Reader = new StreamReader(this.__ToStream(__tmp18.ToString())))
+                {
+                    bool __tmp18_last = __tmp18Reader.EndOfStream;
+                    while(!__tmp18_last)
+                    {
+                        string __tmp18_line = __tmp18Reader.ReadLine();
+                        __tmp18_last = __tmp18Reader.EndOfStream;
+                        if ((__tmp18_last && !string.IsNullOrEmpty(__tmp18_line)) || (!__tmp18_last && __tmp18_line != null))
+                        {
+                            __out.Append(__tmp18_line);
+                            __tmp14_outputWritten = true;
+                        }
+                        if (!__tmp18_last) __out.AppendLine(true);
+                    }
+                }
+                string __tmp19_line = "\"/>"; //17:52
+                if (!string.IsNullOrEmpty(__tmp19_line))
+                {
+                    __out.Append(__tmp19_line);
+                    __tmp14_outputWritten = true;
+                }
+                if (__tmp14_outputWritten) __out.AppendLine(true);
+                if (__tmp14_outputWritten)
+                {
+                    __out.AppendLine(false); //17:55
                 }
             }
-            string __tmp16_line = "\"/>"; //16:60
-            if (!string.IsNullOrEmpty(__tmp16_line))
-            {
-                __out.Append(__tmp16_line);
-                __tmp13_outputWritten = true;
-            }
-            if (__tmp13_outputWritten) __out.AppendLine(true);
-            if (__tmp13_outputWritten)
-            {
-                __out.AppendLine(false); //16:63
-            }
-            bool __tmp18_outputWritten = false;
-            string __tmp19_line = "			<property name=\"javax.persistence.jdbc.user\" value=\""; //17:1
-            if (!string.IsNullOrEmpty(__tmp19_line))
-            {
-                __out.Append(__tmp19_line);
-                __tmp18_outputWritten = true;
-            }
-            StringBuilder __tmp20 = new StringBuilder();
-            __tmp20.Append(username);
-            using(StreamReader __tmp20Reader = new StreamReader(this.__ToStream(__tmp20.ToString())))
-            {
-                bool __tmp20_last = __tmp20Reader.EndOfStream;
-                while(!__tmp20_last)
-                {
-                    string __tmp20_line = __tmp20Reader.ReadLine();
-                    __tmp20_last = __tmp20Reader.EndOfStream;
-                    if ((__tmp20_last && !string.IsNullOrEmpty(__tmp20_line)) || (!__tmp20_last && __tmp20_line != null))
-                    {
-                        __out.Append(__tmp20_line);
-                        __tmp18_outputWritten = true;
-                    }
-                    if (!__tmp20_last) __out.AppendLine(true);
-                }
-            }
-            string __tmp21_line = "\"/>"; //17:66
-            if (!string.IsNullOrEmpty(__tmp21_line))
-            {
-                __out.Append(__tmp21_line);
-                __tmp18_outputWritten = true;
-            }
-            if (__tmp18_outputWritten) __out.AppendLine(true);
-            if (__tmp18_outputWritten)
-            {
-                __out.AppendLine(false); //17:69
-            }
-            __out.Append("			<property name=\"javax.persistence.jdbc.driver\" value=\"org.apache.derby.jdbc.ClientDriver\"/>"); //18:1
-            __out.AppendLine(false); //18:95
-            bool __tmp23_outputWritten = false;
-            string __tmp24_line = "			<property name=\"javax.persistence.jdbc.password\" value=\""; //19:1
-            if (!string.IsNullOrEmpty(__tmp24_line))
-            {
-                __out.Append(__tmp24_line);
-                __tmp23_outputWritten = true;
-            }
-            StringBuilder __tmp25 = new StringBuilder();
-            __tmp25.Append(password);
-            using(StreamReader __tmp25Reader = new StreamReader(this.__ToStream(__tmp25.ToString())))
-            {
-                bool __tmp25_last = __tmp25Reader.EndOfStream;
-                while(!__tmp25_last)
-                {
-                    string __tmp25_line = __tmp25Reader.ReadLine();
-                    __tmp25_last = __tmp25Reader.EndOfStream;
-                    if ((__tmp25_last && !string.IsNullOrEmpty(__tmp25_line)) || (!__tmp25_last && __tmp25_line != null))
-                    {
-                        __out.Append(__tmp25_line);
-                        __tmp23_outputWritten = true;
-                    }
-                    if (!__tmp25_last) __out.AppendLine(true);
-                }
-            }
-            string __tmp26_line = "\"/>"; //19:70
-            if (!string.IsNullOrEmpty(__tmp26_line))
-            {
-                __out.Append(__tmp26_line);
-                __tmp23_outputWritten = true;
-            }
-            if (__tmp23_outputWritten) __out.AppendLine(true);
-            if (__tmp23_outputWritten)
-            {
-                __out.AppendLine(false); //19:73
-            }
-            __out.Append("			<property name=\"javax.persistence.schema-generation.database.action\" value=\"drop-and-create\"/>"); //20:1
-            __out.AppendLine(false); //20:98
-            __out.Append("		</properties>"); //21:1
-            __out.AppendLine(false); //21:16
-            __out.Append("	</persistence-unit>"); //22:1
-            __out.AppendLine(false); //22:21
-            __out.Append("</persistence>"); //23:1
-            __out.AppendLine(false); //23:15
+            __out.Append("		</properties>"); //19:1
+            __out.AppendLine(false); //19:16
+            __out.Append("	</persistence-unit>"); //20:1
+            __out.AppendLine(false); //20:21
+            __out.Append("</persistence>"); //21:1
+            __out.AppendLine(false); //21:15
             return __out.ToString();
         }
 
-        public string cC(String fullName) //26:1
+        public string cC(String fullName) //24:1
         {
-            return JavaConventionHelper.classFullNamePackageConvention(fullName); //27:2
+            return JavaConventionHelper.classFullNamePackageConvention(fullName); //25:2
         }
 
         private class StringBuilder

@@ -17,11 +17,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java
 {
     static class JavaEeGenerationHelper
     {
-
-        public static readonly String JPA = "JPA";
-        public static readonly String COMPOSITE = "Composite";
-
-
+        
         public static void CreateMavenParentProject(String root, String parentName)
         {
             string parentRoot = Path.Combine(root, parentName);
@@ -58,16 +54,20 @@ namespace MetaDslx.Languages.Soal.Generator.Java
                 project.groupId = composite.MName;
                 project.artifactId = component.MName;
                 project.version = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.PROJECT_VERSION);
+
                 PomXmlIdentifier server = null;
                 //PomXmlIdentifier = new List<String>();
                 //server.groupId = "org.wildfly.plugins";
                 //server.artifactId = "wildfly-javaee7-with-tools";
                 //server.version = "10.1.0.Final";
+
                 List<PomXmlIdentifier> dependencies = new List<PomXmlIdentifier>();
+
                 PomXmlIdentifier junitDep = new PomXmlIdentifier();
                 junitDep.groupId = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.JUNIT_DEPENDENCY_GROUPID);
                 junitDep.artifactId = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.JUNIT_DEPENDENCY_ARTIFACTID);
                 junitDep.version = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.JUNIT_DEPENDENCY_VERSION);
+
                 PomXmlIdentifier jpaDep = new PomXmlIdentifier();
                 jpaDep.groupId = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.JPA_DEPENDENCY_GROUPID);
                 jpaDep.artifactId = JavaEeTestConfigHandler.getValue(JavaEeTestConstants.JPA_DEPENDENCY_ARTIFACTID);
@@ -96,7 +96,28 @@ namespace MetaDslx.Languages.Soal.Generator.Java
             using (StreamWriter writer = new StreamWriter(Path.Combine(root, "persistence.xml")))
             {
                 PersistenceXmlGenerator persGen = new PersistenceXmlGenerator();
-                writer.WriteLine(persGen.Generate(persistenceUnit, classes, url, username, password));
+
+                List<PersistenceXmlProperty> proplist = new List<PersistenceXmlProperty>();
+                if (JavaEeTestConfigHandler.testOn)
+                {
+                    proplist.Add(new PersistenceXmlProperty(
+                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_URL_PROP_NAME),
+                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_URL_PROP_VALUE)));
+                    proplist.Add(new PersistenceXmlProperty(
+                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_USERNAME_PROP_NAME),
+                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_USERNAME_PROP_VALUE)));
+                    proplist.Add(new PersistenceXmlProperty(
+                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_PASSWORD_PROP_NAME),
+                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_PASSWORD_PROP_VALUE)));
+                    proplist.Add(new PersistenceXmlProperty(
+                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_DRIVER_PROP_NAME),
+                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_DRIVER_PROP_VALUE)));
+                    proplist.Add(new PersistenceXmlProperty(
+                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_GENERATION_PROP_NAME),
+                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_GENERATION_PROP_VALUE)));
+                }
+
+                writer.WriteLine(persGen.Generate(persistenceUnit, classes, proplist));
             }
         }
 
@@ -140,7 +161,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java
                                 }
                             }
 
-                            if (component.Implementation.MName.Equals(JPA))
+                            if (component.Implementation.MName.Equals("JPA"))
                             {
                                 Database db = service.Interface as Database;
                                 List<String> classes = new List<string>();
@@ -156,9 +177,9 @@ namespace MetaDslx.Languages.Soal.Generator.Java
                                         (
                                         JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_PERSISTENCE_UNIT),
                                         classes,
-                                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_URL),
-                                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_USERNAME),
-                                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_PASSWORD),
+                                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_URL_PROP_VALUE),
+                                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_USERNAME_PROP_VALUE),
+                                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_PASSWORD_PROP_VALUE),
                                         currentProjectMETAINF
                                         );
                                 }

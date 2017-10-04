@@ -68,13 +68,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>JavaEeGenerator.mgen</DependentUpon>
     </Compile>
-    <Compile Include="Generator\Java\JavaEeTestConfigReader.cs" />
+    <Compile Include="Generator\Java\JavaEeTestConfigHandler.cs" />
     <Compile Include="Generator\Java\JavaEeTestConstants.cs" />
     <Compile Include="Generator\Java\PersistenceXmlGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PersistenceXmlGenerator.mgen</DependentUpon>
     </Compile>
+    <Compile Include="Generator\Java\PersistenceXmlProperty.cs" />
     <Compile Include="Generator\Java\PomXmlGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
