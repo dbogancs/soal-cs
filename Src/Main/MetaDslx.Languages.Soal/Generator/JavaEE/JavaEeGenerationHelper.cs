@@ -12,10 +12,9 @@ using MetaDslx.Languages.Soal.Generator;
 using MetaDslx.Languages.Soal.Symbols;
 using System.Collections.Immutable;
 using System.IO;
-using MetaDslx.Languages.Soal.Generator.JavaEE.Java;
-using MetaDslx.Languages.Soal.Generator.JavaEE.Persistence;
+using MetaDslx.Languages.Soal.Generator.JavaEE.Maven;
+using MetaDslx.Languages.Soal.Generator.JavaEE.JPA;
 using MetaDslx.Languages.Soal.Generator.JavaEE.Test;
-using MetaDslx.Languages.Soal.Generator.JavaEE.Pom;
 
 namespace MetaDslx.Languages.Soal.Generator.JavaEE
 {
@@ -74,6 +73,11 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE
             }
         }
 
+        public static void GenerateEjbProjectContent(Namespace ns, Component project, MavenProjectStructure mstruc)
+        {
+
+        }
+
         public static void GeneratePomXml(string projectGroupId, string projectArtifactId, MavenProjectStructure paths)
         {
             PomXmlIdentifier project = null;
@@ -115,6 +119,9 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE
 
             if (project.Implementation.Name.Equals("JPA"))
                 GenerateJpaProjectContent(ns, project, mstruc);
+
+            if (project.Implementation.Name.Equals("EJB"))
+                GenerateEjbProjectContent(ns, project, mstruc);
 
             GeneratePomXml(application.MName, project.MName, mstruc);
         }

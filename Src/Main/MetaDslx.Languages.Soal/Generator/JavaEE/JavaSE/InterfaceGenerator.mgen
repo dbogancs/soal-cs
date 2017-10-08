@@ -1,0 +1,6 @@
+﻿namespace MetaDslx.Languages.Soal.Generator.JavaSE;
+generator InterfaceGenerator for object;
+
+template Generate()
+
+end template

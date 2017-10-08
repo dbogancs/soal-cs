@@ -1,0 +1,6 @@
+﻿namespace MetaDslx.Languages.Soal.Generator.JavaEE.EJB;
+generator EjbGenerator for object;
+
+template Generate()
+
+end template

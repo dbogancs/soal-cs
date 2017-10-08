@@ -1,16 +1,12 @@
-﻿namespace MetaDslx.Languages.Soal.Generator.JavaEE;
-generator JavaEeGenerator for object;
+﻿namespace MetaDslx.Languages.Soal.Generator.JavaEE.JPA;
+generator EntityGenerator for object;
 
 using MetaDslx.Languages.Soal.Symbols;
 using MetaDslx.Languages.Soal.Generator.JavaEE.Java;
 using MetaDslx.Core;
 
 
-template Generate()
-
-end template
-
-template GenerateEntity(Struct e, ImmutableModelList<Struct> entities)
+template Generate(Struct e, ImmutableModelList<Struct> entities)
 package [e.Namespace.Name.ToLower()];
 ^
 import java.io.Serializable;

@@ -61,29 +61,59 @@
     <Compile Include="Compilation\SoalParseOptions.cs" />
     <Compile Include="Compilation\SoalScriptCompilationInfo.cs" />
     <Compile Include="Errors\SoalErrorCode.cs" />
-    <Compile Include="Generator\JavaEE\Java\JavaConventionHelper.cs" />
-    <Compile Include="Generator\JavaEE\JavaEeGenerationHelper.cs" />
-    <Compile Include="Generator\JavaEE\JavaEeGenerator.cs">
+    <Compile Include="Generator\JavaEE\EJB\EjbGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>JavaEeGenerator.mgen</DependentUpon>
+      <DependentUpon>EjbGenerator.mgen</DependentUpon>
+    </Compile>
+    <Compile Include="Generator\JavaEE\JavaSE\ClassGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClassGenerator.mgen</DependentUpon>
+    </Compile>
+    <Compile Include="Generator\JavaEE\JavaSE\InterfaceGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InterfaceGenerator.mgen</DependentUpon>
+    </Compile>
+    <Compile Include="Generator\JavaEE\JavaSE\JavaConventionHelper.cs" />
+    <Compile Include="Generator\JavaEE\JavaEeGenerationHelper.cs" />
+    <Compile Include="Generator\JavaEE\JPA\EntityGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityGenerator.mgen</DependentUpon>
     </Compile>
     <Compile Include="Generator\JavaEE\JavaEePrinter.cs" />
     <Compile Include="Generator\JavaEE\Test\JavaEeTestConfigHandler.cs" />
     <Compile Include="Generator\JavaEE\Test\JavaEeTestConstants.cs" />
-    <Compile Include="Generator\JavaEE\Java\MavenProjectStructure.cs" />
-    <Compile Include="Generator\JavaEE\Persistence\PersistenceXmlGenerator.cs">
+    <Compile Include="Generator\JavaEE\Maven\MavenProjectStructure.cs" />
+    <Compile Include="Generator\JavaEE\JPA\PersistenceXmlGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PersistenceXmlGenerator.mgen</DependentUpon>
     </Compile>
-    <Compile Include="Generator\JavaEE\Persistence\PersistenceXmlProperty.cs" />
-    <Compile Include="Generator\JavaEE\Pom\PomXmlGenerator.cs">
+    <Compile Include="Generator\JavaEE\JPA\PersistenceXmlProperty.cs" />
+    <Compile Include="Generator\JavaEE\Maven\PomXmlGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PomXmlGenerator.mgen</DependentUpon>
     </Compile>
-    <Compile Include="Generator\JavaEE\Pom\PomXmlIdentifier.cs" />
+    <Compile Include="Generator\JavaEE\Maven\PomXmlIdentifier.cs" />
+    <Compile Include="Generator\JavaEE\Webservice\RestInterfaceGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RestInterfaceGenerator.mgen</DependentUpon>
+    </Compile>
+    <Compile Include="Generator\JavaEE\Webservice\SoapInterfaceGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SoapInterfaceGenerator.mgen</DependentUpon>
+    </Compile>
+    <Compile Include="Generator\JavaEE\Webservice\WebsocketInterfaceGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebsocketInterfaceGenerator.mgen</DependentUpon>
+    </Compile>
     <Compile Include="Generator\Sample.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -150,17 +180,41 @@
     <Compile Include="Syntax\SoalSyntaxTree.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Generator\JavaEE\JavaEeGenerator.mgen">
+    <None Include="Generator\JavaEE\EJB\EjbGenerator.mgen">
       <Generator>MetaGenerator</Generator>
-      <LastGenOutput>JavaEeGenerator.cs</LastGenOutput>
+      <LastGenOutput>EjbGenerator.cs</LastGenOutput>
     </None>
-    <None Include="Generator\JavaEE\Persistence\PersistenceXmlGenerator.mgen">
+    <None Include="Generator\JavaEE\JPA\EntityGenerator.mgen">
+      <Generator>MetaGenerator</Generator>
+      <LastGenOutput>EntityGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generator\JavaEE\JavaSE\ClassGenerator.mgen">
+      <Generator>MetaGenerator</Generator>
+      <LastGenOutput>ClassGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generator\JavaEE\JavaSE\InterfaceGenerator.mgen">
+      <Generator>MetaGenerator</Generator>
+      <LastGenOutput>InterfaceGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generator\JavaEE\JPA\PersistenceXmlGenerator.mgen">
       <Generator>MetaGenerator</Generator>
       <LastGenOutput>PersistenceXmlGenerator.cs</LastGenOutput>
     </None>
-    <None Include="Generator\JavaEE\Pom\PomXmlGenerator.mgen">
+    <None Include="Generator\JavaEE\Maven\PomXmlGenerator.mgen">
       <Generator>MetaGenerator</Generator>
       <LastGenOutput>PomXmlGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generator\JavaEE\Webservice\RestInterfaceGenerator.mgen">
+      <Generator>MetaGenerator</Generator>
+      <LastGenOutput>RestInterfaceGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generator\JavaEE\Webservice\SoapInterfaceGenerator.mgen">
+      <Generator>MetaGenerator</Generator>
+      <LastGenOutput>SoapInterfaceGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generator\JavaEE\Webservice\WebsocketInterfaceGenerator.mgen">
+      <Generator>MetaGenerator</Generator>
+      <LastGenOutput>WebsocketInterfaceGenerator.cs</LastGenOutput>
     </None>
     <None Include="Generator\Sample.mgen">
       <Generator>MetaGenerator</Generator>

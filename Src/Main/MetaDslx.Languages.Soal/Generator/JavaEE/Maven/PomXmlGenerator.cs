@@ -5,12 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MetaDslx.Languages.Soal.Symbols; //4:1
-using MetaDslx.Languages.Soal.Generator.JavaEE.Pom; //5:1
 
-namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
+namespace MetaDslx.Languages.Soal.Generator.JavaEE.Maven //1:1
 {
-    using __Hidden_PomXmlGenerator_1271032276;
-    namespace __Hidden_PomXmlGenerator_1271032276
+    using __Hidden_PomXmlGenerator_934211076;
+    namespace __Hidden_PomXmlGenerator_934211076
     {
         internal static class __Extensions
         {
@@ -60,17 +59,17 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
             return ++counter;
         }
 
-        public string Generate(PomXmlIdentifier project, PomXmlIdentifier server, List<PomXmlIdentifier> dependencies) //7:1
+        public string Generate(PomXmlIdentifier project, PomXmlIdentifier server, List<PomXmlIdentifier> dependencies) //6:1
         {
             StringBuilder __out = new StringBuilder();
-            __out.Append("<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\""); //8:1
-            __out.AppendLine(false); //8:105
-            __out.Append("  xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd\">"); //9:1
-            __out.AppendLine(false); //9:99
-            __out.Append("	<modelVersion>4.0.0</modelVersion>"); //10:1
-            __out.AppendLine(false); //10:36
+            __out.Append("<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\""); //7:1
+            __out.AppendLine(false); //7:105
+            __out.Append("  xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd\">"); //8:1
+            __out.AppendLine(false); //8:99
+            __out.Append("	<modelVersion>4.0.0</modelVersion>"); //9:1
+            __out.AppendLine(false); //9:36
             bool __tmp2_outputWritten = false;
-            string __tmp3_line = "	<groupId>"; //11:1
+            string __tmp3_line = "	<groupId>"; //10:1
             if (!string.IsNullOrEmpty(__tmp3_line))
             {
                 __out.Append(__tmp3_line);
@@ -93,7 +92,7 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                     if (!__tmp4_last) __out.AppendLine(true);
                 }
             }
-            string __tmp5_line = "</groupId>"; //11:28
+            string __tmp5_line = "</groupId>"; //10:28
             if (!string.IsNullOrEmpty(__tmp5_line))
             {
                 __out.Append(__tmp5_line);
@@ -102,10 +101,10 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
             if (__tmp2_outputWritten) __out.AppendLine(true);
             if (__tmp2_outputWritten)
             {
-                __out.AppendLine(false); //11:38
+                __out.AppendLine(false); //10:38
             }
             bool __tmp7_outputWritten = false;
-            string __tmp8_line = "	<artifactId>"; //12:1
+            string __tmp8_line = "	<artifactId>"; //11:1
             if (!string.IsNullOrEmpty(__tmp8_line))
             {
                 __out.Append(__tmp8_line);
@@ -128,7 +127,7 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                     if (!__tmp9_last) __out.AppendLine(true);
                 }
             }
-            string __tmp10_line = "</artifactId>"; //12:34
+            string __tmp10_line = "</artifactId>"; //11:34
             if (!string.IsNullOrEmpty(__tmp10_line))
             {
                 __out.Append(__tmp10_line);
@@ -137,10 +136,10 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
             if (__tmp7_outputWritten) __out.AppendLine(true);
             if (__tmp7_outputWritten)
             {
-                __out.AppendLine(false); //12:47
+                __out.AppendLine(false); //11:47
             }
             bool __tmp12_outputWritten = false;
-            string __tmp13_line = "	<version>"; //13:1
+            string __tmp13_line = "	<version>"; //12:1
             if (!string.IsNullOrEmpty(__tmp13_line))
             {
                 __out.Append(__tmp13_line);
@@ -163,7 +162,7 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                     if (!__tmp14_last) __out.AppendLine(true);
                 }
             }
-            string __tmp15_line = "</version>"; //13:28
+            string __tmp15_line = "</version>"; //12:28
             if (!string.IsNullOrEmpty(__tmp15_line))
             {
                 __out.Append(__tmp15_line);
@@ -172,25 +171,25 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
             if (__tmp12_outputWritten) __out.AppendLine(true);
             if (__tmp12_outputWritten)
             {
-                __out.AppendLine(false); //13:38
+                __out.AppendLine(false); //12:38
             }
+            __out.AppendLine(true); //13:1
             __out.AppendLine(true); //14:1
-            __out.AppendLine(true); //15:1
-            __out.Append("	<dependencies>"); //16:1
-            __out.AppendLine(false); //16:16
-            __out.AppendLine(true); //17:1
+            __out.Append("	<dependencies>"); //15:1
+            __out.AppendLine(false); //15:16
+            __out.AppendLine(true); //16:1
             var __loop1_results = 
-                (from dependency in __Enumerate((dependencies).GetEnumerator()) //18:8
+                (from dependency in __Enumerate((dependencies).GetEnumerator()) //17:8
                 select new { dependency = dependency}
-                ).ToList(); //18:2
+                ).ToList(); //17:2
             for (int __loop1_iteration = 0; __loop1_iteration < __loop1_results.Count; ++__loop1_iteration)
             {
                 var __tmp16 = __loop1_results[__loop1_iteration];
                 var dependency = __tmp16.dependency;
-                __out.Append("		<dependency>"); //19:1
-                __out.AppendLine(false); //19:15
+                __out.Append("		<dependency>"); //18:1
+                __out.AppendLine(false); //18:15
                 bool __tmp18_outputWritten = false;
-                string __tmp19_line = "		  <groupId>"; //20:1
+                string __tmp19_line = "		  <groupId>"; //19:1
                 if (!string.IsNullOrEmpty(__tmp19_line))
                 {
                     __out.Append(__tmp19_line);
@@ -213,7 +212,7 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                         if (!__tmp20_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp21_line = "</groupId>"; //20:34
+                string __tmp21_line = "</groupId>"; //19:34
                 if (!string.IsNullOrEmpty(__tmp21_line))
                 {
                     __out.Append(__tmp21_line);
@@ -222,10 +221,10 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                 if (__tmp18_outputWritten) __out.AppendLine(true);
                 if (__tmp18_outputWritten)
                 {
-                    __out.AppendLine(false); //20:44
+                    __out.AppendLine(false); //19:44
                 }
                 bool __tmp23_outputWritten = false;
-                string __tmp24_line = "		  <artifactId>"; //21:1
+                string __tmp24_line = "		  <artifactId>"; //20:1
                 if (!string.IsNullOrEmpty(__tmp24_line))
                 {
                     __out.Append(__tmp24_line);
@@ -248,7 +247,7 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                         if (!__tmp25_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp26_line = "</artifactId>"; //21:40
+                string __tmp26_line = "</artifactId>"; //20:40
                 if (!string.IsNullOrEmpty(__tmp26_line))
                 {
                     __out.Append(__tmp26_line);
@@ -257,10 +256,10 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                 if (__tmp23_outputWritten) __out.AppendLine(true);
                 if (__tmp23_outputWritten)
                 {
-                    __out.AppendLine(false); //21:53
+                    __out.AppendLine(false); //20:53
                 }
                 bool __tmp28_outputWritten = false;
-                string __tmp29_line = "		  <version>"; //22:1
+                string __tmp29_line = "		  <version>"; //21:1
                 if (!string.IsNullOrEmpty(__tmp29_line))
                 {
                     __out.Append(__tmp29_line);
@@ -283,7 +282,7 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                         if (!__tmp30_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp31_line = "</version>"; //22:34
+                string __tmp31_line = "</version>"; //21:34
                 if (!string.IsNullOrEmpty(__tmp31_line))
                 {
                     __out.Append(__tmp31_line);
@@ -292,27 +291,27 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                 if (__tmp28_outputWritten) __out.AppendLine(true);
                 if (__tmp28_outputWritten)
                 {
-                    __out.AppendLine(false); //22:44
+                    __out.AppendLine(false); //21:44
                 }
-                __out.Append("		</dependency>"); //23:1
-                __out.AppendLine(false); //23:16
-                __out.AppendLine(true); //24:1
+                __out.Append("		</dependency>"); //22:1
+                __out.AppendLine(false); //22:16
+                __out.AppendLine(true); //23:1
             }
-            __out.Append("	</dependencies>"); //26:1
-            __out.AppendLine(false); //26:17
+            __out.Append("	</dependencies>"); //25:1
+            __out.AppendLine(false); //25:17
+            __out.AppendLine(true); //26:1
             __out.AppendLine(true); //27:1
-            __out.AppendLine(true); //28:1
-            __out.Append("	<build>"); //29:1
-            __out.AppendLine(false); //29:9
-            __out.Append("		<plugins>"); //30:1
-            __out.AppendLine(false); //30:12
-            __out.AppendLine(true); //31:1
-            if (server != null) //32:2
+            __out.Append("	<build>"); //28:1
+            __out.AppendLine(false); //28:9
+            __out.Append("		<plugins>"); //29:1
+            __out.AppendLine(false); //29:12
+            __out.AppendLine(true); //30:1
+            if (server != null) //31:2
             {
-                __out.Append("			<plugin>"); //33:1
-                __out.AppendLine(false); //33:12
+                __out.Append("			<plugin>"); //32:1
+                __out.AppendLine(false); //32:12
                 bool __tmp33_outputWritten = false;
-                string __tmp34_line = "				<groupId>"; //34:1
+                string __tmp34_line = "				<groupId>"; //33:1
                 if (!string.IsNullOrEmpty(__tmp34_line))
                 {
                     __out.Append(__tmp34_line);
@@ -335,7 +334,7 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                         if (!__tmp35_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp36_line = "</groupId>"; //34:30
+                string __tmp36_line = "</groupId>"; //33:30
                 if (!string.IsNullOrEmpty(__tmp36_line))
                 {
                     __out.Append(__tmp36_line);
@@ -344,10 +343,10 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                 if (__tmp33_outputWritten) __out.AppendLine(true);
                 if (__tmp33_outputWritten)
                 {
-                    __out.AppendLine(false); //34:40
+                    __out.AppendLine(false); //33:40
                 }
                 bool __tmp38_outputWritten = false;
-                string __tmp39_line = "				<artifactId>"; //35:1
+                string __tmp39_line = "				<artifactId>"; //34:1
                 if (!string.IsNullOrEmpty(__tmp39_line))
                 {
                     __out.Append(__tmp39_line);
@@ -370,7 +369,7 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                         if (!__tmp40_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp41_line = "</artifactId>"; //35:36
+                string __tmp41_line = "</artifactId>"; //34:36
                 if (!string.IsNullOrEmpty(__tmp41_line))
                 {
                     __out.Append(__tmp41_line);
@@ -379,10 +378,10 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                 if (__tmp38_outputWritten) __out.AppendLine(true);
                 if (__tmp38_outputWritten)
                 {
-                    __out.AppendLine(false); //35:49
+                    __out.AppendLine(false); //34:49
                 }
                 bool __tmp43_outputWritten = false;
-                string __tmp44_line = "				<version>"; //36:1
+                string __tmp44_line = "				<version>"; //35:1
                 if (!string.IsNullOrEmpty(__tmp44_line))
                 {
                     __out.Append(__tmp44_line);
@@ -405,7 +404,7 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                         if (!__tmp45_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp46_line = "</version>"; //36:30
+                string __tmp46_line = "</version>"; //35:30
                 if (!string.IsNullOrEmpty(__tmp46_line))
                 {
                     __out.Append(__tmp46_line);
@@ -414,20 +413,20 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
                 if (__tmp43_outputWritten) __out.AppendLine(true);
                 if (__tmp43_outputWritten)
                 {
-                    __out.AppendLine(false); //36:40
+                    __out.AppendLine(false); //35:40
                 }
-                __out.Append("			</plugin>"); //37:1
-                __out.AppendLine(false); //37:13
-                __out.AppendLine(true); //38:1
+                __out.Append("			</plugin>"); //36:1
+                __out.AppendLine(false); //36:13
+                __out.AppendLine(true); //37:1
             }
-            __out.Append("		</plugins>"); //40:1
-            __out.AppendLine(false); //40:13
-            __out.Append("	</build>"); //41:1
-            __out.AppendLine(false); //41:10
+            __out.Append("		</plugins>"); //39:1
+            __out.AppendLine(false); //39:13
+            __out.Append("	</build>"); //40:1
+            __out.AppendLine(false); //40:10
+            __out.AppendLine(true); //41:1
             __out.AppendLine(true); //42:1
-            __out.AppendLine(true); //43:1
-            __out.Append("</project>"); //44:1
-            __out.AppendLine(false); //44:11
+            __out.Append("</project>"); //43:1
+            __out.AppendLine(false); //43:11
             return __out.ToString();
         }
 

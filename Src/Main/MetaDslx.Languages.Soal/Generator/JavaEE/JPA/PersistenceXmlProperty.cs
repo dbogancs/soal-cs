@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MetaDslx.Languages.Soal.Generator.JavaEE.Persistence
+namespace MetaDslx.Languages.Soal.Generator.JavaEE.JPA
 {
     public class PersistenceXmlProperty
     {

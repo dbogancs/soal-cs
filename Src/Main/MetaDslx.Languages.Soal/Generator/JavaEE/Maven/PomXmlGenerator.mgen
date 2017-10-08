@@ -1,8 +1,7 @@
-﻿namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom;
+﻿namespace MetaDslx.Languages.Soal.Generator.JavaEE.Maven;
 generator PomXmlGenerator for object;
 
 using MetaDslx.Languages.Soal.Symbols;
-using MetaDslx.Languages.Soal.Generator.JavaEE.Pom;
 
 template Generate(PomXmlIdentifier project, PomXmlIdentifier server, List<PomXmlIdentifier> dependencies)
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

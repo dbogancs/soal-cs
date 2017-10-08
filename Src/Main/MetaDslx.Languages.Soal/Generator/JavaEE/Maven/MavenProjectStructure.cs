@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace MetaDslx.Languages.Soal.Generator.JavaEE.Java
+namespace MetaDslx.Languages.Soal.Generator.JavaEE.Maven
 {
     class MavenProjectStructure
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom
+namespace MetaDslx.Languages.Soal.Generator.JavaEE.Maven
 {
     public class PomXmlIdentifier
     {

@@ -12,8 +12,8 @@ using MetaDslx.Languages.Soal.Generator;
 using MetaDslx.Languages.Soal.Symbols;
 using System.Collections.Immutable;
 using System.IO;
-using MetaDslx.Languages.Soal.Generator.JavaEE.Pom;
-using MetaDslx.Languages.Soal.Generator.JavaEE.Persistence;
+using MetaDslx.Languages.Soal.Generator.JavaEE.Maven;
+using MetaDslx.Languages.Soal.Generator.JavaEE.JPA;
 
 namespace MetaDslx.Languages.Soal.Generator.JavaEE
 {
@@ -34,8 +34,8 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE
             Directory.CreateDirectory(nsDirectory);
             using (StreamWriter writer = new StreamWriter(Path.Combine(nsDirectory, entity.Name + ".java")))
             {
-                JavaEeGenerator javaGen = new JavaEeGenerator();
-                writer.WriteLine(javaGen.GenerateEntity(entity, entites));
+                EntityGenerator javaGen = new EntityGenerator();
+                writer.WriteLine(javaGen.Generate(entity, entites));
             }
         }
 
@@ -55,7 +55,7 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE
             Directory.CreateDirectory(nsDirectory);
             using (StreamWriter writer = new StreamWriter(Path.Combine(nsDirectory, en.Name + ".java")))
             {
-                JavaEeGenerator javaGen = new JavaEeGenerator();
+                EntityGenerator javaGen = new EntityGenerator();
                 writer.WriteLine(javaGen.GenerateEnum(en));
             }
         }
