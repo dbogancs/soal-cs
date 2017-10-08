@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MetaDslx.Languages.Soal.Symbols; //4:1
-using MetaDslx.Languages.Soal.Generator.Java; //5:1
+using MetaDslx.Languages.Soal.Generator.JavaEE.Pom; //5:1
 
-namespace MetaDslx.Languages.Soal.Generator.Java //1:1
+namespace MetaDslx.Languages.Soal.Generator.JavaEE.Pom //1:1
 {
-    using __Hidden_PomXmlGenerator_264985425;
-    namespace __Hidden_PomXmlGenerator_264985425
+    using __Hidden_PomXmlGenerator_1271032276;
+    namespace __Hidden_PomXmlGenerator_1271032276
     {
         internal static class __Extensions
         {

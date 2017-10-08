@@ -12,8 +12,10 @@ using MetaDslx.Languages.Soal.Generator;
 using MetaDslx.Languages.Soal.Symbols;
 using System.Collections.Immutable;
 using System.IO;
+using MetaDslx.Languages.Soal.Generator.JavaEE.Pom;
+using MetaDslx.Languages.Soal.Generator.JavaEE.Persistence;
 
-namespace MetaDslx.Languages.Soal.Generator.Java
+namespace MetaDslx.Languages.Soal.Generator.JavaEE
 {
     static class JavaEePrinter
     {

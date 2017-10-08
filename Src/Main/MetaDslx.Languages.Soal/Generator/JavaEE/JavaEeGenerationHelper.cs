@@ -12,8 +12,12 @@ using MetaDslx.Languages.Soal.Generator;
 using MetaDslx.Languages.Soal.Symbols;
 using System.Collections.Immutable;
 using System.IO;
+using MetaDslx.Languages.Soal.Generator.JavaEE.Java;
+using MetaDslx.Languages.Soal.Generator.JavaEE.Persistence;
+using MetaDslx.Languages.Soal.Generator.JavaEE.Test;
+using MetaDslx.Languages.Soal.Generator.JavaEE.Pom;
 
-namespace MetaDslx.Languages.Soal.Generator.Java
+namespace MetaDslx.Languages.Soal.Generator.JavaEE
 {
     static class JavaEeGenerationHelper
     {

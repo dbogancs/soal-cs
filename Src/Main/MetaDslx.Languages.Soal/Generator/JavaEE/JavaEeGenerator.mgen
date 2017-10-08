@@ -1,8 +1,8 @@
-﻿namespace MetaDslx.Languages.Soal.Generator.Java;
+﻿namespace MetaDslx.Languages.Soal.Generator.JavaEE;
 generator JavaEeGenerator for object;
 
 using MetaDslx.Languages.Soal.Symbols;
-using MetaDslx.Languages.Soal.Generator.Java;
+using MetaDslx.Languages.Soal.Generator.JavaEE.Java;
 using MetaDslx.Core;
 
 

@@ -5,12 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections; //4:1
-using MetaDslx.Languages.Soal.Generator.Java; //5:1
+using MetaDslx.Languages.Soal.Generator.JavaEE.Persistence; //5:1
+using MetaDslx.Languages.Soal.Generator.JavaEE.Java; //6:1
 
-namespace MetaDslx.Languages.Soal.Generator.Java //1:1
+namespace MetaDslx.Languages.Soal.Generator.JavaEE.Persistence //1:1
 {
-    using __Hidden_PersistenceXmlGenerator_1826432529;
-    namespace __Hidden_PersistenceXmlGenerator_1826432529
+    using __Hidden_PersistenceXmlGenerator_434707371;
+    namespace __Hidden_PersistenceXmlGenerator_434707371
     {
         internal static class __Extensions
         {
@@ -60,15 +61,15 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             return ++counter;
         }
 
-        public string Generate(String persistenceUnit, String provider, IEnumerable<String> classes, List<PersistenceXmlProperty> properties) //7:1
+        public string Generate(String persistenceUnit, String provider, IEnumerable<String> classes, List<PersistenceXmlProperty> properties) //8:1
         {
             StringBuilder __out = new StringBuilder();
-            __out.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"); //8:1
-            __out.AppendLine(false); //8:39
-            __out.Append("<persistence version=\"2.1\" xmlns=\"http://xmlns.jcp.org/xml/ns/persistence\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd\">"); //9:1
-            __out.AppendLine(false); //9:251
+            __out.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"); //9:1
+            __out.AppendLine(false); //9:39
+            __out.Append("<persistence version=\"2.1\" xmlns=\"http://xmlns.jcp.org/xml/ns/persistence\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd\">"); //10:1
+            __out.AppendLine(false); //10:251
             bool __tmp2_outputWritten = false;
-            string __tmp3_line = "	<persistence-unit name=\""; //10:1
+            string __tmp3_line = "	<persistence-unit name=\""; //11:1
             if (!string.IsNullOrEmpty(__tmp3_line))
             {
                 __out.Append(__tmp3_line);
@@ -91,7 +92,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp4_last) __out.AppendLine(true);
                 }
             }
-            string __tmp5_line = "\" transaction-type=\"RESOURCE_LOCAL\">"; //10:43
+            string __tmp5_line = "\" transaction-type=\"RESOURCE_LOCAL\">"; //11:43
             if (!string.IsNullOrEmpty(__tmp5_line))
             {
                 __out.Append(__tmp5_line);
@@ -100,10 +101,10 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             if (__tmp2_outputWritten) __out.AppendLine(true);
             if (__tmp2_outputWritten)
             {
-                __out.AppendLine(false); //10:79
+                __out.AppendLine(false); //11:79
             }
             bool __tmp7_outputWritten = false;
-            string __tmp8_line = "		<provider>"; //11:1
+            string __tmp8_line = "		<provider>"; //12:1
             if (!string.IsNullOrEmpty(__tmp8_line))
             {
                 __out.Append(__tmp8_line);
@@ -126,7 +127,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp9_last) __out.AppendLine(true);
                 }
             }
-            string __tmp10_line = "</provider>"; //11:23
+            string __tmp10_line = "</provider>"; //12:23
             if (!string.IsNullOrEmpty(__tmp10_line))
             {
                 __out.Append(__tmp10_line);
@@ -135,18 +136,18 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             if (__tmp7_outputWritten) __out.AppendLine(true);
             if (__tmp7_outputWritten)
             {
-                __out.AppendLine(false); //11:34
+                __out.AppendLine(false); //12:34
             }
             var __loop1_results = 
-                (from ins in __Enumerate((classes).GetEnumerator()) //12:7
+                (from ins in __Enumerate((classes).GetEnumerator()) //13:7
                 select new { ins = ins}
-                ).ToList(); //12:2
+                ).ToList(); //13:2
             for (int __loop1_iteration = 0; __loop1_iteration < __loop1_results.Count; ++__loop1_iteration)
             {
                 var __tmp11 = __loop1_results[__loop1_iteration];
                 var ins = __tmp11.ins;
                 bool __tmp13_outputWritten = false;
-                string __tmp14_line = "		<class>"; //13:1
+                string __tmp14_line = "		<class>"; //14:1
                 if (!string.IsNullOrEmpty(__tmp14_line))
                 {
                     __out.Append(__tmp14_line);
@@ -169,7 +170,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp15_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp16_line = "</class>"; //13:19
+                string __tmp16_line = "</class>"; //14:19
                 if (!string.IsNullOrEmpty(__tmp16_line))
                 {
                     __out.Append(__tmp16_line);
@@ -178,21 +179,21 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                 if (__tmp13_outputWritten) __out.AppendLine(true);
                 if (__tmp13_outputWritten)
                 {
-                    __out.AppendLine(false); //13:27
+                    __out.AppendLine(false); //14:27
                 }
             }
-            __out.Append("		<properties>"); //15:1
-            __out.AppendLine(false); //15:15
+            __out.Append("		<properties>"); //16:1
+            __out.AppendLine(false); //16:15
             var __loop2_results = 
-                (from prop in __Enumerate((properties).GetEnumerator()) //16:7
+                (from prop in __Enumerate((properties).GetEnumerator()) //17:7
                 select new { prop = prop}
-                ).ToList(); //16:2
+                ).ToList(); //17:2
             for (int __loop2_iteration = 0; __loop2_iteration < __loop2_results.Count; ++__loop2_iteration)
             {
                 var __tmp17 = __loop2_results[__loop2_iteration];
                 var prop = __tmp17.prop;
                 bool __tmp19_outputWritten = false;
-                string __tmp20_line = "			<property name=\""; //17:1
+                string __tmp20_line = "			<property name=\""; //18:1
                 if (!string.IsNullOrEmpty(__tmp20_line))
                 {
                     __out.Append(__tmp20_line);
@@ -215,7 +216,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp21_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp22_line = "\" value=\""; //17:31
+                string __tmp22_line = "\" value=\""; //18:31
                 if (!string.IsNullOrEmpty(__tmp22_line))
                 {
                     __out.Append(__tmp22_line);
@@ -238,7 +239,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                         if (!__tmp23_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp24_line = "\"/>"; //17:52
+                string __tmp24_line = "\"/>"; //18:52
                 if (!string.IsNullOrEmpty(__tmp24_line))
                 {
                     __out.Append(__tmp24_line);
@@ -247,21 +248,21 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                 if (__tmp19_outputWritten) __out.AppendLine(true);
                 if (__tmp19_outputWritten)
                 {
-                    __out.AppendLine(false); //17:55
+                    __out.AppendLine(false); //18:55
                 }
             }
-            __out.Append("		</properties>"); //19:1
-            __out.AppendLine(false); //19:16
-            __out.Append("	</persistence-unit>"); //20:1
-            __out.AppendLine(false); //20:21
-            __out.Append("</persistence>"); //21:1
-            __out.AppendLine(false); //21:15
+            __out.Append("		</properties>"); //20:1
+            __out.AppendLine(false); //20:16
+            __out.Append("	</persistence-unit>"); //21:1
+            __out.AppendLine(false); //21:21
+            __out.Append("</persistence>"); //22:1
+            __out.AppendLine(false); //22:15
             return __out.ToString();
         }
 
-        public string cC(String fullName) //24:1
+        public string cC(String fullName) //25:1
         {
-            return JavaConventionHelper.classFullNamePackageConvention(fullName); //25:2
+            return JavaConventionHelper.classFullNamePackageConvention(fullName); //26:2
         }
 
         private class StringBuilder

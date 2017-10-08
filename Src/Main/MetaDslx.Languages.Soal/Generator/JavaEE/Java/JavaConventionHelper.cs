@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MetaDslx.Languages.Soal.Symbols;
 using MetaDslx.Core;
 
-namespace MetaDslx.Languages.Soal.Generator.Java
+namespace MetaDslx.Languages.Soal.Generator.JavaEE.Java
 {
     static class JavaConventionHelper
     {

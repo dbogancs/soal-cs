@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace MetaDslx.Languages.Soal.Generator.Java
+namespace MetaDslx.Languages.Soal.Generator.JavaEE.Test
 {
     static class JavaEeTestConfigHandler
     {

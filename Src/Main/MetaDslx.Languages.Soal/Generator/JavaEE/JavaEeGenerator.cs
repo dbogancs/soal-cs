@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MetaDslx.Languages.Soal.Symbols; //4:1
-using MetaDslx.Languages.Soal.Generator.Java; //5:1
+using MetaDslx.Languages.Soal.Generator.JavaEE.Java; //5:1
 using MetaDslx.Core; //6:1
 
-namespace MetaDslx.Languages.Soal.Generator.Java //1:1
+namespace MetaDslx.Languages.Soal.Generator.JavaEE //1:1
 {
-    using __Hidden_JavaEeGenerator_1670084978;
-    namespace __Hidden_JavaEeGenerator_1670084978
+    using __Hidden_JavaEeGenerator_956311229;
+    namespace __Hidden_JavaEeGenerator_956311229
     {
         internal static class __Extensions
         {

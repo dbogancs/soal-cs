@@ -1,8 +1,9 @@
-﻿namespace MetaDslx.Languages.Soal.Generator.Java;
+﻿namespace MetaDslx.Languages.Soal.Generator.JavaEE.Persistence;
 generator PersistenceXmlGenerator for object;
 
 using System.Collections;
-using MetaDslx.Languages.Soal.Generator.Java;
+using MetaDslx.Languages.Soal.Generator.JavaEE.Persistence;
+using MetaDslx.Languages.Soal.Generator.JavaEE.Java;
 
 template Generate(String persistenceUnit, String provider, IEnumerable<String> classes, List<PersistenceXmlProperty> properties)
 <?xml version="1.0" encoding="UTF-8"?>

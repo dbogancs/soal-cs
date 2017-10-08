@@ -12,7 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MetaDslx.Languages.Soal.Generator.Java;
+using MetaDslx.Languages.Soal.Generator.JavaEE;
 
 namespace MetaDslx.Languages.Soal
 {
