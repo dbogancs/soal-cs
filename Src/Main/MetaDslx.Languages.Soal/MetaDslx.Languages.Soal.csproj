@@ -71,6 +71,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ClassGenerator.mgen</DependentUpon>
     </Compile>
+    <Compile Include="Generator\JavaEE\JavaSE\EnumGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnumGenerator.mgen</DependentUpon>
+    </Compile>
     <Compile Include="Generator\JavaEE\JavaSE\InterfaceGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -183,6 +188,10 @@
     <None Include="Generator\JavaEE\EJB\EjbGenerator.mgen">
       <Generator>MetaGenerator</Generator>
       <LastGenOutput>EjbGenerator.cs</LastGenOutput>
+    </None>
+    <None Include="Generator\JavaEE\JavaSE\EnumGenerator.mgen">
+      <Generator>MetaGenerator</Generator>
+      <LastGenOutput>EnumGenerator.cs</LastGenOutput>
     </None>
     <None Include="Generator\JavaEE\JPA\EntityGenerator.mgen">
       <Generator>MetaGenerator</Generator>

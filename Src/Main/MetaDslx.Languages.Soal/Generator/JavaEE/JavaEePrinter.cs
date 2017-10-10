@@ -67,8 +67,8 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE
             Directory.CreateDirectory(packageDirectory);
             using (StreamWriter writer = new StreamWriter(Path.Combine(packageDirectory, en.Name + ".java")))
             {
-                EntityGenerator javaGen = new EntityGenerator();
-                writer.WriteLine(javaGen.GenerateEnum(en));
+                EnumGenerator javaGen = new EnumGenerator();
+                writer.WriteLine(javaGen.Generate(en));
             }
         }
 

@@ -78,17 +78,6 @@ public class [e.Name] implements Serializable {
 }
 end template
 
-template GenerateEnum(MetaDslx.Languages.Soal.Symbols.Enum en)
-package [en.Namespace.Name.ToLower()];
-^
-public enum [en.Name] {
-	[int i=0]
-	[loop(iprop:en.MChildren)]
-	[aC(iprop.MName)][if(i!=en.MChildren.Count-1)],[end if]
-	[i=i+1]
-	[end loop]
-}
-end template
 
 template addAttributeImports(Struct e)
 	[loop(iprop:e.Properties)]
