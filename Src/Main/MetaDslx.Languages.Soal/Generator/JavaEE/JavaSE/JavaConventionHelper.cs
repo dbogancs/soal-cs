@@ -63,6 +63,11 @@ namespace MetaDslx.Languages.Soal.Generator.JavaSE
         {
             return columnName.ToUpper();
         }
+
+        public static string methodNameConvention(string methodName)
+        {
+            return Char.ToLowerInvariant(methodName[0]) + methodName.Substring(1);
+        }
     }
 }
 

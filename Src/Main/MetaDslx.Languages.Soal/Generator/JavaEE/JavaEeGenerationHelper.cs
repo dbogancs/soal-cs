@@ -113,9 +113,19 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE
             }
         }
 
+        public static void GenerateJavaInterfaces(Component project, MavenProjectStructure mstruc)
+        {
+            foreach (var service in project.Services)
+            {
+                JavaEePrinter.PrintJavaInterface(service.Interface, mstruc.mainJavaPath);
+            }
+        }
+
         public static void GenerateMavenProject(Namespace ns, Composite application, Component project, string root)
         {
             MavenProjectStructure mstruc = new MavenProjectStructure(root, project.Name);
+
+            GenerateJavaInterfaces(project, mstruc);
 
             if (project.Implementation.Name.Equals("JPA"))
                 GenerateJpaProjectContent(ns, project, mstruc);
@@ -136,9 +146,9 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE
                     string parentRoot = Path.Combine(outputDirectory, composite.MName);
                     Directory.CreateDirectory(parentRoot);
                     
-                    foreach (var component in composite.Components)
+                    foreach (var project in composite.Components)
                     {
-                        GenerateMavenProject(ns, composite, component, parentRoot);
+                        GenerateMavenProject(ns, composite, project, parentRoot);
                     }
                 }
             }

@@ -10,8 +10,8 @@ using MetaDslx.Core; //6:1
 
 namespace MetaDslx.Languages.Soal.Generator.JavaEE.JPA //1:1
 {
-    using __Hidden_EntityGenerator_519691030;
-    namespace __Hidden_EntityGenerator_519691030
+    using __Hidden_EntityGenerator_547851750;
+    namespace __Hidden_EntityGenerator_547851750
     {
         internal static class __Extensions
         {

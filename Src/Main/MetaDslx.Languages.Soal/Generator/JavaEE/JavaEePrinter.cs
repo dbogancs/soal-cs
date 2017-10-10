@@ -14,6 +14,7 @@ using System.Collections.Immutable;
 using System.IO;
 using MetaDslx.Languages.Soal.Generator.JavaEE.Maven;
 using MetaDslx.Languages.Soal.Generator.JavaEE.JPA;
+using MetaDslx.Languages.Soal.Generator.JavaSE;
 
 namespace MetaDslx.Languages.Soal.Generator.JavaEE
 {
@@ -30,12 +31,23 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE
 
         public static void PrintJpaEntity(Struct entity, string root, ImmutableModelList<Struct> entites)
         {
-            string nsDirectory = Path.Combine(root, entity.Namespace.Name.ToLower());
-            Directory.CreateDirectory(nsDirectory);
-            using (StreamWriter writer = new StreamWriter(Path.Combine(nsDirectory, entity.Name + ".java")))
+            string packageDirectory = Path.Combine(root, entity.Namespace.Name.ToLower());
+            Directory.CreateDirectory(packageDirectory);
+            using (StreamWriter writer = new StreamWriter(Path.Combine(packageDirectory, entity.Name + ".java")))
             {
                 EntityGenerator javaGen = new EntityGenerator();
                 writer.WriteLine(javaGen.Generate(entity, entites));
+            }
+        }
+
+        public static void PrintJavaInterface(Interface iface, string root)
+        {
+            string packageDirectory = Path.Combine(root, iface.Namespace.Name.ToLower());
+            Directory.CreateDirectory(packageDirectory);
+            using (StreamWriter writer = new StreamWriter(Path.Combine(packageDirectory, iface.Name + ".java")))
+            {
+                InterfaceGenerator javaGen = new InterfaceGenerator();
+                writer.WriteLine(javaGen.Generate(iface));
             }
         }
 
@@ -51,9 +63,9 @@ namespace MetaDslx.Languages.Soal.Generator.JavaEE
 
         public static void PrintEnum(Symbols.Enum en, string root)
         {
-            string nsDirectory = Path.Combine(root, en.Namespace.Name.ToLower());
-            Directory.CreateDirectory(nsDirectory);
-            using (StreamWriter writer = new StreamWriter(Path.Combine(nsDirectory, en.Name + ".java")))
+            string packageDirectory = Path.Combine(root, en.Namespace.Name.ToLower());
+            Directory.CreateDirectory(packageDirectory);
+            using (StreamWriter writer = new StreamWriter(Path.Combine(packageDirectory, en.Name + ".java")))
             {
                 EntityGenerator javaGen = new EntityGenerator();
                 writer.WriteLine(javaGen.GenerateEnum(en));

@@ -2,7 +2,7 @@
 generator EntityGenerator for object;
 
 using MetaDslx.Languages.Soal.Symbols;
-using MetaDslx.Languages.Soal.Generator.JavaEE.Java;
+using MetaDslx.Languages.Soal.Generator.JavaSE;
 using MetaDslx.Core;
 
 
