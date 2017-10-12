@@ -1,0 +1,66 @@
+﻿namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB;
+generator EjbGenerator for object;
+
+using MetaDslx.Languages.Soal.Symbols;
+using MetaDslx.Core;
+using MetaDslx.Languages.Soal.Generator.Java;
+
+template Generate(Component c, List<string> imports)
+package [pC(c.Namespace.Name)];
+^
+import javax.ejb;
+import java.lang.UnsupportedOperationException
+import java.util.Date;
+[loop(import:imports)]
+import [import];
+[end loop]
+^
+@Stateless
+public class [c.Name] \
+[if(c.Services != null && c.Services.Count > 0)]implements \
+[int k=0]\
+[loop(service:c.Services)]\
+[service.Interface.Name]\
+[if(k!=c.Services.Count-1)], [end if][k=k+1]\
+[end loop]\
+[end if] {
+^
+[loop(service:c.Services)]\
+[loop(func:service.Interface.Operations)]\
+	[tC(func.Result.Type)] [func.Name](\
+[int i=0]\
+[loop(arg:func.Parameters)]\
+[tC(arg.Type)] [mC(arg.Name)]\
+[if(i!=func.Parameters.Count-1)], [end if][i=i+1]\
+[end loop]\
+)\
+[if(func.Exceptions != null && func.Exceptions.Count > 0)]\
+ throws \
+[int j=0]\
+[loop(ex:func.Exceptions)]\
+[ex.Name]\
+[if(j!=func.Exceptions.Count-1)], [end if][j=j+1]\
+[end loop]\
+[end if] {
+		// TODO
+        throw new UnsupportedOperationException();
+	}
+^
+[end loop]
+[end loop]
+
+}
+
+end template
+
+function string tC(SoalType t)
+	return JavaConventionHelper.classNameConvention(t);
+end function
+
+function string mC(String methodName)
+	return JavaConventionHelper.methodNameConvention(methodName);
+end function
+
+function string pC(String packageName)
+	return JavaConventionHelper.packageConvention(packageName);
+end function

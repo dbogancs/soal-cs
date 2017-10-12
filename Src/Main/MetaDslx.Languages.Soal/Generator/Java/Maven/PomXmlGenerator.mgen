@@ -1,0 +1,44 @@
+﻿namespace MetaDslx.Languages.Soal.Generator.Java.Maven;
+generator PomXmlGenerator for object;
+
+using MetaDslx.Languages.Soal.Symbols;
+
+template Generate(PomXmlIdentifier project, List<PomXmlIdentifier> dependencies, List<PomXmlIdentifier> plugins)
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>[project.groupId]</groupId>
+	<artifactId>[project.artifactId]</artifactId>
+	<version>[project.version]</version>
+^
+^
+	<dependencies>
+^
+[loop (dependency:dependencies)]
+		<dependency>
+		  <groupId>[dependency.groupId]</groupId>
+		  <artifactId>[dependency.artifactId]</artifactId>
+		  <version>[dependency.version]</version>
+		</dependency>
+^
+[end loop]
+	</dependencies>
+^
+^
+	<build>
+		<plugins>
+^
+[loop (plugin:plugins)]
+			<plugin>
+				<groupId>[plugin.groupId]</groupId>
+				<artifactId>[plugin.artifactId]</artifactId>
+				<version>[plugin.version]</version>
+			</plugin>
+[end loop]
+^
+		</plugins>
+	</build>
+^
+^
+</project>
+end template

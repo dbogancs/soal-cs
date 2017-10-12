@@ -1,0 +1,30 @@
+﻿namespace MetaDslx.Languages.Soal.Generator.Java;
+generator ExceptionGenerator for object;
+
+using MetaDslx.Languages.Soal.Symbols;
+
+template Generate(Struct exception)
+
+package [pC(exception.Namespace.Name)].exceptions;
+^
+class [exception.Name] implements Exception {
+^
+	[loop(iprop:exception.Properties)]
+	public [tC(iprop.Type)] [aC(iprop.Name)];
+	[end loop]
+^
+}
+
+end template
+
+function string aC(String attributeName)
+	return JavaConventionHelper.attributeNameConvention(attributeName);
+end function
+
+function string tC(SoalType t)
+	return JavaConventionHelper.classNameConvention(t);
+end function
+
+function string pC(String packageName)
+	return JavaConventionHelper.packageConvention(packageName);
+end function

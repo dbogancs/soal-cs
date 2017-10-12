@@ -1,0 +1,18 @@
+﻿namespace MetaDslx.Languages.Soal.Generator.Java;
+generator EnumGenerator for object;
+
+template Generate(MetaDslx.Languages.Soal.Symbols.Enum en)
+package [en.Namespace.Name.ToLower()].enums;
+^
+public enum [en.Name] {
+	[int i=0]
+	[loop(iprop:en.MChildren)]
+	[aC(iprop.MName)][if(i!=en.MChildren.Count-1)],[end if]
+	[i=i+1]
+	[end loop]
+}
+end template
+
+function string aC(String attributeName)
+	return JavaConventionHelper.attributeNameConvention(attributeName);
+end function

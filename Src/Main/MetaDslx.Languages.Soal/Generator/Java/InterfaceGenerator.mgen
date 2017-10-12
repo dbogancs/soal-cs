@@ -1,0 +1,50 @@
+﻿namespace MetaDslx.Languages.Soal.Generator.Java;
+generator InterfaceGenerator for object;
+
+using MetaDslx.Languages.Soal.Symbols;
+
+template Generate(Interface iface, List<string> imports)
+
+package [iface.Namespace.Name.ToLower()];
+^
+[loop(import:imports)]
+import [import];
+[end loop]
+^
+public interface [iface.Name] {
+[loop(func:iface.Operations)]\
+	[tC(func.Result.Type)] [func.Name](\
+[int i=0]\
+[loop(arg:func.Parameters)]\
+[tC(arg.Type)] [mC(arg.Name)]\
+[if(i!=func.Parameters.Count-1)], [end if][i=i+1]\
+[end loop]\
+)\
+[if(func.Exceptions != null && func.Exceptions.Count > 0)]\
+ throws \
+[int j=0]\
+[loop(ex:func.Exceptions)]\
+[ex.Name]\
+[if(j!=func.Exceptions.Count-1)], [end if][j=j+1]\
+[end loop]\
+[end if];
+[end loop]
+}
+
+end template
+
+function string mC(String methodName)
+	return JavaConventionHelper.methodNameConvention(methodName);
+end function
+
+function string aC(String attributeName)
+	return JavaConventionHelper.attributeNameConvention(attributeName);
+end function
+
+function string cC(String columnName)
+	return JavaConventionHelper.databaseColumnNameConvention(columnName);
+end function
+
+function string tC(SoalType t)
+	return JavaConventionHelper.classNameConvention(t);
+end function
