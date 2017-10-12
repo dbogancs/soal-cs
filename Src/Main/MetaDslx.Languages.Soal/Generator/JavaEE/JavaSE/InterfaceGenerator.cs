@@ -8,8 +8,8 @@ using MetaDslx.Languages.Soal.Symbols; //4:1
 
 namespace MetaDslx.Languages.Soal.Generator.JavaSE //1:1
 {
-    using __Hidden_InterfaceGenerator_643960601;
-    namespace __Hidden_InterfaceGenerator_643960601
+    using __Hidden_InterfaceGenerator_1261867386;
+    namespace __Hidden_InterfaceGenerator_1261867386
     {
         internal static class __Extensions
         {
@@ -239,10 +239,10 @@ namespace MetaDslx.Languages.Soal.Generator.JavaSE //1:1
                     }
                     i = i + 1;
                 }
-                __out.Append(") "); //18:1
-                if (func.Exceptions != null) //19:2
+                __out.Append(")"); //18:1
+                if (func.Exceptions != null && func.Exceptions.Count > 0) //19:2
                 {
-                    __out.Append("throws "); //20:1
+                    __out.Append(" throws "); //20:1
                     int j = 0; //21:2
                     var __loop3_results = 
                         (from ex in __Enumerate((func.Exceptions).GetEnumerator()) //22:7
@@ -273,9 +273,9 @@ namespace MetaDslx.Languages.Soal.Generator.JavaSE //1:1
                         }
                         j = j + 1;
                     }
-                    __out.Append(";"); //25:11
-                    __out.AppendLine(false); //25:12
                 }
+                __out.Append(";"); //26:9
+                __out.AppendLine(false); //26:10
             }
             __out.Append("}"); //28:1
             __out.AppendLine(false); //28:2

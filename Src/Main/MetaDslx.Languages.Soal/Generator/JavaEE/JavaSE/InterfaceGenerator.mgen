@@ -15,15 +15,15 @@ public interface [iface.Name] {
 [tC(arg.Type)] [mC(arg.Name)]\
 [if(i!=func.Parameters.Count-1)], [end if][i=i+1]\
 [end loop]\
-) \
-[if(func.Exceptions != null)]\
-throws \
+)\
+[if(func.Exceptions != null && func.Exceptions.Count > 0)]\
+ throws \
 [int j=0]\
 [loop(ex:func.Exceptions)]\
 [ex.Name]\
 [if(j!=func.Exceptions.Count-1)], [end if][j=j+1]\
-[end loop];
-[end if]\
+[end loop]\
+[end if];
 [end loop]
 }
 
