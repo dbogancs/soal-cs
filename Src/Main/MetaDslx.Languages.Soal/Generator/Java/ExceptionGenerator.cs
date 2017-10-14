@@ -8,8 +8,8 @@ using MetaDslx.Languages.Soal.Symbols; //4:1
 
 namespace MetaDslx.Languages.Soal.Generator.Java //1:1
 {
-    using __Hidden_ExceptionGenerator_2061222907;
-    namespace __Hidden_ExceptionGenerator_2061222907
+    using __Hidden_ExceptionGenerator_1335636571;
+    namespace __Hidden_ExceptionGenerator_1335636571
     {
         internal static class __Extensions
         {
@@ -99,7 +99,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             }
             __out.AppendLine(true); //9:1
             bool __tmp7_outputWritten = false;
-            string __tmp8_line = "class "; //10:1
+            string __tmp8_line = "public class "; //10:1
             if (!string.IsNullOrEmpty(__tmp8_line))
             {
                 __out.Append(__tmp8_line);
@@ -122,7 +122,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
                     if (!__tmp9_last) __out.AppendLine(true);
                 }
             }
-            string __tmp10_line = " implements Exception {"; //10:23
+            string __tmp10_line = " extends Exception {"; //10:30
             if (!string.IsNullOrEmpty(__tmp10_line))
             {
                 __out.Append(__tmp10_line);
@@ -131,7 +131,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java //1:1
             if (__tmp7_outputWritten) __out.AppendLine(true);
             if (__tmp7_outputWritten)
             {
-                __out.AppendLine(false); //10:46
+                __out.AppendLine(false); //10:50
             }
             __out.AppendLine(true); //11:1
             var __loop1_results = 

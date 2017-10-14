@@ -10,8 +10,8 @@ using MetaDslx.Languages.Soal.Generator.Java; //6:1
 
 namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
 {
-    using __Hidden_EjbGenerator_677176255;
-    namespace __Hidden_EjbGenerator_677176255
+    using __Hidden_EjbGenerator_1348040367;
+    namespace __Hidden_EjbGenerator_1348040367
     {
         internal static class __Extensions
         {
@@ -100,10 +100,10 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                 __out.AppendLine(false); //9:32
             }
             __out.AppendLine(true); //10:1
-            __out.Append("import javax.ejb;"); //11:1
-            __out.AppendLine(false); //11:18
-            __out.Append("import java.lang.UnsupportedOperationException"); //12:1
-            __out.AppendLine(false); //12:47
+            __out.Append("import javax.ejb.Stateless;"); //11:1
+            __out.AppendLine(false); //11:28
+            __out.Append("import java.lang.UnsupportedOperationException;"); //12:1
+            __out.AppendLine(false); //12:48
             __out.Append("import java.util.Date;"); //13:1
             __out.AppendLine(false); //13:23
             var __loop1_results = 
@@ -232,52 +232,52 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                 {
                     var __tmp22 = __loop4_results[__loop4_iteration];
                     var func = __tmp22.func;
-                    string __tmp23Prefix = "	"; //30:1
-                    StringBuilder __tmp25 = new StringBuilder();
-                    __tmp25.Append(tC(func.Result.Type));
-                    using(StreamReader __tmp25Reader = new StreamReader(this.__ToStream(__tmp25.ToString())))
+                    string __tmp25_line = "	public "; //30:1
+                    if (!string.IsNullOrEmpty(__tmp25_line))
                     {
-                        bool __tmp25_last = __tmp25Reader.EndOfStream;
-                        while(!__tmp25_last)
+                        __out.Append(__tmp25_line);
+                    }
+                    StringBuilder __tmp26 = new StringBuilder();
+                    __tmp26.Append(tC(func.Result.Type));
+                    using(StreamReader __tmp26Reader = new StreamReader(this.__ToStream(__tmp26.ToString())))
+                    {
+                        bool __tmp26_last = __tmp26Reader.EndOfStream;
+                        while(!__tmp26_last)
                         {
-                            string __tmp25_line = __tmp25Reader.ReadLine();
-                            __tmp25_last = __tmp25Reader.EndOfStream;
-                            if (!string.IsNullOrEmpty(__tmp23Prefix))
+                            string __tmp26_line = __tmp26Reader.ReadLine();
+                            __tmp26_last = __tmp26Reader.EndOfStream;
+                            if ((__tmp26_last && !string.IsNullOrEmpty(__tmp26_line)) || (!__tmp26_last && __tmp26_line != null))
                             {
-                                __out.Append(__tmp23Prefix);
+                                __out.Append(__tmp26_line);
                             }
-                            if ((__tmp25_last && !string.IsNullOrEmpty(__tmp25_line)) || (!__tmp25_last && __tmp25_line != null))
-                            {
-                                __out.Append(__tmp25_line);
-                            }
-                            if (!__tmp25_last) __out.AppendLine(true);
+                            if (!__tmp26_last) __out.AppendLine(true);
                         }
                     }
-                    string __tmp26_line = " "; //30:24
-                    if (!string.IsNullOrEmpty(__tmp26_line))
+                    string __tmp27_line = " "; //30:31
+                    if (!string.IsNullOrEmpty(__tmp27_line))
                     {
-                        __out.Append(__tmp26_line);
+                        __out.Append(__tmp27_line);
                     }
-                    StringBuilder __tmp27 = new StringBuilder();
-                    __tmp27.Append(func.Name);
-                    using(StreamReader __tmp27Reader = new StreamReader(this.__ToStream(__tmp27.ToString())))
+                    StringBuilder __tmp28 = new StringBuilder();
+                    __tmp28.Append(func.Name);
+                    using(StreamReader __tmp28Reader = new StreamReader(this.__ToStream(__tmp28.ToString())))
                     {
-                        bool __tmp27_last = __tmp27Reader.EndOfStream;
-                        while(!__tmp27_last)
+                        bool __tmp28_last = __tmp28Reader.EndOfStream;
+                        while(!__tmp28_last)
                         {
-                            string __tmp27_line = __tmp27Reader.ReadLine();
-                            __tmp27_last = __tmp27Reader.EndOfStream;
-                            if ((__tmp27_last && !string.IsNullOrEmpty(__tmp27_line)) || (!__tmp27_last && __tmp27_line != null))
+                            string __tmp28_line = __tmp28Reader.ReadLine();
+                            __tmp28_last = __tmp28Reader.EndOfStream;
+                            if ((__tmp28_last && !string.IsNullOrEmpty(__tmp28_line)) || (!__tmp28_last && __tmp28_line != null))
                             {
-                                __out.Append(__tmp27_line);
+                                __out.Append(__tmp28_line);
                             }
-                            if (!__tmp27_last) __out.AppendLine(true);
+                            if (!__tmp28_last) __out.AppendLine(true);
                         }
                     }
-                    string __tmp28_line = "("; //30:36
-                    if (!string.IsNullOrEmpty(__tmp28_line))
+                    string __tmp29_line = "("; //30:43
+                    if (!string.IsNullOrEmpty(__tmp29_line))
                     {
-                        __out.Append(__tmp28_line);
+                        __out.Append(__tmp29_line);
                     }
                     int i = 0; //31:2
                     var __loop5_results = 
@@ -286,41 +286,41 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                         ).ToList(); //32:2
                     for (int __loop5_iteration = 0; __loop5_iteration < __loop5_results.Count; ++__loop5_iteration)
                     {
-                        var __tmp29 = __loop5_results[__loop5_iteration];
-                        var arg = __tmp29.arg;
-                        StringBuilder __tmp32 = new StringBuilder();
-                        __tmp32.Append(tC(arg.Type));
-                        using(StreamReader __tmp32Reader = new StreamReader(this.__ToStream(__tmp32.ToString())))
+                        var __tmp30 = __loop5_results[__loop5_iteration];
+                        var arg = __tmp30.arg;
+                        StringBuilder __tmp33 = new StringBuilder();
+                        __tmp33.Append(tC(arg.Type));
+                        using(StreamReader __tmp33Reader = new StreamReader(this.__ToStream(__tmp33.ToString())))
                         {
-                            bool __tmp32_last = __tmp32Reader.EndOfStream;
-                            while(!__tmp32_last)
+                            bool __tmp33_last = __tmp33Reader.EndOfStream;
+                            while(!__tmp33_last)
                             {
-                                string __tmp32_line = __tmp32Reader.ReadLine();
-                                __tmp32_last = __tmp32Reader.EndOfStream;
-                                if ((__tmp32_last && !string.IsNullOrEmpty(__tmp32_line)) || (!__tmp32_last && __tmp32_line != null))
+                                string __tmp33_line = __tmp33Reader.ReadLine();
+                                __tmp33_last = __tmp33Reader.EndOfStream;
+                                if ((__tmp33_last && !string.IsNullOrEmpty(__tmp33_line)) || (!__tmp33_last && __tmp33_line != null))
                                 {
-                                    __out.Append(__tmp32_line);
+                                    __out.Append(__tmp33_line);
                                 }
-                                if (!__tmp32_last) __out.AppendLine(true);
+                                if (!__tmp33_last) __out.AppendLine(true);
                             }
                         }
-                        string __tmp33_line = " "; //33:15
-                        if (!string.IsNullOrEmpty(__tmp33_line))
+                        string __tmp34_line = " "; //33:15
+                        if (!string.IsNullOrEmpty(__tmp34_line))
                         {
-                            __out.Append(__tmp33_line);
+                            __out.Append(__tmp34_line);
                         }
-                        StringBuilder __tmp34 = new StringBuilder();
-                        __tmp34.Append(mC(arg.Name));
-                        using(StreamReader __tmp34Reader = new StreamReader(this.__ToStream(__tmp34.ToString())))
+                        StringBuilder __tmp35 = new StringBuilder();
+                        __tmp35.Append(mC(arg.Name));
+                        using(StreamReader __tmp35Reader = new StreamReader(this.__ToStream(__tmp35.ToString())))
                         {
-                            bool __tmp34_last = __tmp34Reader.EndOfStream;
-                            while(!__tmp34_last)
+                            bool __tmp35_last = __tmp35Reader.EndOfStream;
+                            while(!__tmp35_last)
                             {
-                                string __tmp34_line = __tmp34Reader.ReadLine();
-                                __tmp34_last = __tmp34Reader.EndOfStream;
-                                if ((__tmp34_last && !string.IsNullOrEmpty(__tmp34_line)) || (!__tmp34_last && __tmp34_line != null))
+                                string __tmp35_line = __tmp35Reader.ReadLine();
+                                __tmp35_last = __tmp35Reader.EndOfStream;
+                                if ((__tmp35_last && !string.IsNullOrEmpty(__tmp35_line)) || (!__tmp35_last && __tmp35_line != null))
                                 {
-                                    __out.Append(__tmp34_line);
+                                    __out.Append(__tmp35_line);
                                 }
                             }
                         }
@@ -341,20 +341,20 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                             ).ToList(); //40:2
                         for (int __loop6_iteration = 0; __loop6_iteration < __loop6_results.Count; ++__loop6_iteration)
                         {
-                            var __tmp35 = __loop6_results[__loop6_iteration];
-                            var ex = __tmp35.ex;
-                            StringBuilder __tmp38 = new StringBuilder();
-                            __tmp38.Append(ex.Name);
-                            using(StreamReader __tmp38Reader = new StreamReader(this.__ToStream(__tmp38.ToString())))
+                            var __tmp36 = __loop6_results[__loop6_iteration];
+                            var ex = __tmp36.ex;
+                            StringBuilder __tmp39 = new StringBuilder();
+                            __tmp39.Append(ex.Name);
+                            using(StreamReader __tmp39Reader = new StreamReader(this.__ToStream(__tmp39.ToString())))
                             {
-                                bool __tmp38_last = __tmp38Reader.EndOfStream;
-                                while(!__tmp38_last)
+                                bool __tmp39_last = __tmp39Reader.EndOfStream;
+                                while(!__tmp39_last)
                                 {
-                                    string __tmp38_line = __tmp38Reader.ReadLine();
-                                    __tmp38_last = __tmp38Reader.EndOfStream;
-                                    if ((__tmp38_last && !string.IsNullOrEmpty(__tmp38_line)) || (!__tmp38_last && __tmp38_line != null))
+                                    string __tmp39_line = __tmp39Reader.ReadLine();
+                                    __tmp39_last = __tmp39Reader.EndOfStream;
+                                    if ((__tmp39_last && !string.IsNullOrEmpty(__tmp39_line)) || (!__tmp39_last && __tmp39_line != null))
                                     {
-                                        __out.Append(__tmp38_line);
+                                        __out.Append(__tmp39_line);
                                     }
                                 }
                             }

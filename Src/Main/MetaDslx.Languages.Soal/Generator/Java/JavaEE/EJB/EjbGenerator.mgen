@@ -8,8 +8,8 @@ using MetaDslx.Languages.Soal.Generator.Java;
 template Generate(Component c, List<string> imports)
 package [pC(c.Namespace.Name)];
 ^
-import javax.ejb;
-import java.lang.UnsupportedOperationException
+import javax.ejb.Stateless;
+import java.lang.UnsupportedOperationException;
 import java.util.Date;
 [loop(import:imports)]
 import [import];
@@ -27,7 +27,7 @@ public class [c.Name] \
 ^
 [loop(service:c.Services)]\
 [loop(func:service.Interface.Operations)]\
-	[tC(func.Result.Type)] [func.Name](\
+	public [tC(func.Result.Type)] [func.Name](\
 [int i=0]\
 [loop(arg:func.Parameters)]\
 [tC(arg.Type)] [mC(arg.Name)]\

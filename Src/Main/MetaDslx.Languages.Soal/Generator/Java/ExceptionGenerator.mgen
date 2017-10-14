@@ -7,7 +7,7 @@ template Generate(Struct exception)
 
 package [pC(exception.Namespace.Name)].exceptions;
 ^
-class [exception.Name] implements Exception {
+public class [exception.Name] extends Exception {
 ^
 	[loop(iprop:exception.Properties)]
 	public [tC(iprop.Type)] [aC(iprop.Name)];
