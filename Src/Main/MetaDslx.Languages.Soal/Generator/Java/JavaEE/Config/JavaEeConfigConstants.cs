@@ -4,15 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using MetaDslx.Languages.Soal.Generator.Config;
 
-
-namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.Test
+namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.Config
 {
-    static class JavaEeTestConstants
+    class JavaEeConfigConstants : ConfigConstants
     {
-        public static readonly string TEST_ON = "test_on";
-
-
         public static readonly string PROJECT_VERSION = "project_version";
 
         public static readonly string SERVER_GROUPID = "server_groupid";
@@ -45,8 +42,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.Test
         public static readonly string DATABASE_PASSWORD_PROP_NAME = "database_password_prop_name";
         public static readonly string DATABASE_DRIVER_PROP_NAME = "database_driver_prop_name";
         public static readonly string DATABASE_GENERATION_PROP_NAME = "database_generation_prop_name";
-
-        public static readonly string TRUE = "true";
-        public static readonly string CONFIG_PATH = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "javaee-test-config.txt");
+        
+        public override string CONFIG_PATH { get { return Path.Combine(System.IO.Directory.GetCurrentDirectory(), "javaee-config.txt"); } }
     }
 }

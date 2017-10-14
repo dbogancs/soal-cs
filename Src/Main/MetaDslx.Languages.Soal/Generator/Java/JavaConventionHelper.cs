@@ -5,53 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 using MetaDslx.Languages.Soal.Symbols;
 using MetaDslx.Core;
+using MetaDslx.Languages.Soal.Generator.Java.Config;
 
 namespace MetaDslx.Languages.Soal.Generator.Java
 {
     static class JavaConventionHelper
     {
-        public static String classFullNamePackageConvention(String fullName)
+        public static string classFullNamePackageConvention(string fullName)
         {
-            String className = fullName.Split('.').Last();
+            string className = fullName.Split('.').Last();
             int splitIndex = fullName.LastIndexOf(".");
             return fullName.Substring(0, splitIndex).ToLower() + "." + className;
         }
 
-        public static String classNameConvention(SoalType c)
+        public static string classNameConvention(SoalType c)
         {
+            ArrayType at = c as ArrayType;
+
             if (c.MName != null)
             {
-                if (c.MName.Equals("TimeSpan"))
-                {
-                    return "Date";
-                }
-                else if (c.MName.Equals("string"))
-                {
-                    return "String";
-                }
-                else if (c.MName.Equals("DateTime"))
-                {
-                    return "Date";
-                }
-                else
-                {
-                    return c.MName;
-                }
+                return JavaTypeConfigHandler.SwitchTypeName(c.MName);
+            }
+            else if (at.InnerType != null)
+            {
+                return JavaTypeConfigHandler.SwitchTypeName(at.MMetaClass.Name) + "<" + JavaTypeConfigHandler.SwitchTypeName(at.InnerType.MName) + ">";
             }
             else
             {
-                ArrayType at = (ArrayType)c;
-                if (at.MMetaClass.Name.Equals("ArrayType") && at.InnerType != null && !at.InnerType.MName.Equals(null))
-                {
-                    return "List<" + at.InnerType.MName + ">";
-                }
-                else
-                {
-                    return "";
-                }
+                return "UNKNOWN_TYPE";
             }
-
-
         }
 
         public static string attributeNameConvention(String attributeName)

@@ -12,10 +12,10 @@ using MetaDslx.Languages.Soal.Generator;
 using MetaDslx.Languages.Soal.Symbols;
 using System.Collections.Immutable;
 using System.IO;
-using MetaDslx.Languages.Soal.Generator.Java;
+using MetaDslx.Languages.Soal.Generator.Java.Import;
 using MetaDslx.Languages.Soal.Generator.Java.Maven;
 using MetaDslx.Languages.Soal.Generator.Java.JavaEE.JPA;
-using MetaDslx.Languages.Soal.Generator.Java.JavaEE.Test;
+using MetaDslx.Languages.Soal.Generator.Java.JavaEE.Config;
 
 namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
 {
@@ -43,31 +43,31 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
                 Directory.CreateDirectory(mstruc.METAINFPath);
 
                 List<PersistenceXmlProperty> proplist = new List<PersistenceXmlProperty>();
-                if (JavaEeTestConfigHandler.testOn)
+                if (JavaEeConfigHandler.configOn)
                 {
                     proplist.Add(new PersistenceXmlProperty(
-                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_URL_PROP_NAME),
-                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_URL_PROP_VALUE)));
+                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_URL_PROP_NAME),
+                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_URL_PROP_VALUE)));
                     proplist.Add(new PersistenceXmlProperty(
-                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_USERNAME_PROP_NAME),
-                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_USERNAME_PROP_VALUE)));
+                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_USERNAME_PROP_NAME),
+                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_USERNAME_PROP_VALUE)));
                     proplist.Add(new PersistenceXmlProperty(
-                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_PASSWORD_PROP_NAME),
-                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_PASSWORD_PROP_VALUE)));
+                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_PASSWORD_PROP_NAME),
+                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_PASSWORD_PROP_VALUE)));
                     proplist.Add(new PersistenceXmlProperty(
-                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_DRIVER_PROP_NAME),
-                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_DRIVER_PROP_VALUE)));
+                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_DRIVER_PROP_NAME),
+                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_DRIVER_PROP_VALUE)));
                     proplist.Add(new PersistenceXmlProperty(
-                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_GENERATION_PROP_NAME),
-                        JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_GENERATION_PROP_VALUE)));
+                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_GENERATION_PROP_NAME),
+                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_GENERATION_PROP_VALUE)));
                 }
 
                 //JavaEePrinter.PrintAllEnum(ns, mstruc.mainJavaPath);
 
                 JavaEePrinter.PrintPersistenceXml
                     (
-                    JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_PERSISTENCE_UNIT),
-                    JavaEeTestConfigHandler.getValue(JavaEeTestConstants.DATABASE_PERSISTENCE_UNIT_PROVIDER),
+                    JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_PERSISTENCE_UNIT),
+                    JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_PERSISTENCE_UNIT_PROVIDER),
                     classes,
                     proplist,
                     mstruc.METAINFPath

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MetaDslx.Languages.Soal.Symbols;
-using MetaDslx.Languages.Soal.Generator.Java.Import;
+using MetaDslx.Languages.Soal.Generator.Java.Config;
 
-namespace MetaDslx.Languages.Soal.Generator.Java
+namespace MetaDslx.Languages.Soal.Generator.Java.Import
 {
     class JavaImportCollector
     {
@@ -63,11 +63,18 @@ namespace MetaDslx.Languages.Soal.Generator.Java
             Struct entity = type as Struct;
             ArrayType list = type as ArrayType;
             Symbols.Enum enumtype = type as Symbols.Enum;
+            PrimitiveType primitiv = type as PrimitiveType;
 
             if (list != null)
             {
                 entity = list.InnerType as Struct;
-                AddImport(project.Name, project.Namespace.Name, typeOwnerName, "java.util", "List", false);
+                string importString = JavaImportConfigHandler.getValue(JavaTypeConfigHandler.SwitchTypeName(list.MMetaClass.Name));
+                if (importString != null)
+                {
+                    string importPackage = importString.Substring(0, importString.LastIndexOf("."));
+                    string importObjectName = importString.Substring(importString.LastIndexOf(".") + 1);
+                    AddImport(project.Name, project.Namespace.Name, typeOwnerName, importPackage, importObjectName, false);
+                }
             }
 
             if (entity != null)
@@ -93,6 +100,17 @@ namespace MetaDslx.Languages.Soal.Generator.Java
                     }
                 }
             }
+            else if (primitiv != null)
+            {
+                string importString = JavaImportConfigHandler.getValue(JavaTypeConfigHandler.SwitchTypeName(primitiv.MName));
+                if (importString != null)
+                {
+                    string importPackage = importString.Substring(0, importString.LastIndexOf("."));
+                    string importObjectName = importString.Substring(importString.LastIndexOf(".") + 1);
+                    AddImport(project.Name, project.Namespace.Name, typeOwnerName, importPackage, importObjectName, false);
+                }
+            }
+            
         }
 
         bool isFileGenerationNeeded(Component project, SoalType type)

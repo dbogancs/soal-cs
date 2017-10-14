@@ -10,7 +10,6 @@ package [pC(c.Namespace.Name)];
 ^
 import javax.ejb.Stateless;
 import java.lang.UnsupportedOperationException;
-import java.util.Date;
 [loop(import:imports)]
 import [import];
 [end loop]

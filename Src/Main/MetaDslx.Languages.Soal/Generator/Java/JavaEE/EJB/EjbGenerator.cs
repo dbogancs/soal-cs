@@ -10,8 +10,8 @@ using MetaDslx.Languages.Soal.Generator.Java; //6:1
 
 namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
 {
-    using __Hidden_EjbGenerator_1348040367;
-    namespace __Hidden_EjbGenerator_1348040367
+    using __Hidden_EjbGenerator_566928556;
+    namespace __Hidden_EjbGenerator_566928556
     {
         internal static class __Extensions
         {
@@ -104,18 +104,16 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
             __out.AppendLine(false); //11:28
             __out.Append("import java.lang.UnsupportedOperationException;"); //12:1
             __out.AppendLine(false); //12:48
-            __out.Append("import java.util.Date;"); //13:1
-            __out.AppendLine(false); //13:23
             var __loop1_results = 
-                (from import in __Enumerate((imports).GetEnumerator()) //14:7
+                (from import in __Enumerate((imports).GetEnumerator()) //13:7
                 select new { import = import}
-                ).ToList(); //14:2
+                ).ToList(); //13:2
             for (int __loop1_iteration = 0; __loop1_iteration < __loop1_results.Count; ++__loop1_iteration)
             {
                 var __tmp6 = __loop1_results[__loop1_iteration];
                 var import = __tmp6.import;
                 bool __tmp8_outputWritten = false;
-                string __tmp9_line = "import "; //15:1
+                string __tmp9_line = "import "; //14:1
                 if (!string.IsNullOrEmpty(__tmp9_line))
                 {
                     __out.Append(__tmp9_line);
@@ -138,7 +136,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                         if (!__tmp10_last) __out.AppendLine(true);
                     }
                 }
-                string __tmp11_line = ";"; //15:16
+                string __tmp11_line = ";"; //14:16
                 if (!string.IsNullOrEmpty(__tmp11_line))
                 {
                     __out.Append(__tmp11_line);
@@ -147,13 +145,13 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                 if (__tmp8_outputWritten) __out.AppendLine(true);
                 if (__tmp8_outputWritten)
                 {
-                    __out.AppendLine(false); //15:17
+                    __out.AppendLine(false); //14:17
                 }
             }
-            __out.AppendLine(true); //17:1
-            __out.Append("@Stateless"); //18:1
-            __out.AppendLine(false); //18:11
-            string __tmp14_line = "public class "; //19:1
+            __out.AppendLine(true); //16:1
+            __out.Append("@Stateless"); //17:1
+            __out.AppendLine(false); //17:11
+            string __tmp14_line = "public class "; //18:1
             if (!string.IsNullOrEmpty(__tmp14_line))
             {
                 __out.Append(__tmp14_line);
@@ -174,19 +172,19 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                     if (!__tmp15_last) __out.AppendLine(true);
                 }
             }
-            string __tmp16_line = " "; //19:22
+            string __tmp16_line = " "; //18:22
             if (!string.IsNullOrEmpty(__tmp16_line))
             {
                 __out.Append(__tmp16_line);
             }
-            if (c.Services != null && c.Services.Count > 0) //20:2
+            if (c.Services != null && c.Services.Count > 0) //19:2
             {
-                __out.Append("implements "); //20:49
-                int k = 0; //21:2
+                __out.Append("implements "); //19:49
+                int k = 0; //20:2
                 var __loop2_results = 
-                    (from service in __Enumerate((c.Services).GetEnumerator()) //22:7
+                    (from service in __Enumerate((c.Services).GetEnumerator()) //21:7
                     select new { service = service}
-                    ).ToList(); //22:2
+                    ).ToList(); //21:2
                 for (int __loop2_iteration = 0; __loop2_iteration < __loop2_results.Count; ++__loop2_iteration)
                 {
                     var __tmp17 = __loop2_results[__loop2_iteration];
@@ -206,33 +204,33 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                             }
                         }
                     }
-                    if (k != c.Services.Count - 1) //24:2
+                    if (k != c.Services.Count - 1) //23:2
                     {
-                        __out.Append(", "); //24:28
+                        __out.Append(", "); //23:28
                     }
                     k = k + 1;
                 }
             }
-            __out.Append(" {"); //26:9
-            __out.AppendLine(false); //26:11
-            __out.AppendLine(true); //27:1
+            __out.Append(" {"); //25:9
+            __out.AppendLine(false); //25:11
+            __out.AppendLine(true); //26:1
             var __loop3_results = 
-                (from service in __Enumerate((c.Services).GetEnumerator()) //28:7
+                (from service in __Enumerate((c.Services).GetEnumerator()) //27:7
                 select new { service = service}
-                ).ToList(); //28:2
+                ).ToList(); //27:2
             for (int __loop3_iteration = 0; __loop3_iteration < __loop3_results.Count; ++__loop3_iteration)
             {
                 var __tmp21 = __loop3_results[__loop3_iteration];
                 var service = __tmp21.service;
                 var __loop4_results = 
-                    (from func in __Enumerate((service.Interface.Operations).GetEnumerator()) //29:7
+                    (from func in __Enumerate((service.Interface.Operations).GetEnumerator()) //28:7
                     select new { func = func}
-                    ).ToList(); //29:2
+                    ).ToList(); //28:2
                 for (int __loop4_iteration = 0; __loop4_iteration < __loop4_results.Count; ++__loop4_iteration)
                 {
                     var __tmp22 = __loop4_results[__loop4_iteration];
                     var func = __tmp22.func;
-                    string __tmp25_line = "	public "; //30:1
+                    string __tmp25_line = "	public "; //29:1
                     if (!string.IsNullOrEmpty(__tmp25_line))
                     {
                         __out.Append(__tmp25_line);
@@ -253,7 +251,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                             if (!__tmp26_last) __out.AppendLine(true);
                         }
                     }
-                    string __tmp27_line = " "; //30:31
+                    string __tmp27_line = " "; //29:31
                     if (!string.IsNullOrEmpty(__tmp27_line))
                     {
                         __out.Append(__tmp27_line);
@@ -274,16 +272,16 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                             if (!__tmp28_last) __out.AppendLine(true);
                         }
                     }
-                    string __tmp29_line = "("; //30:43
+                    string __tmp29_line = "("; //29:43
                     if (!string.IsNullOrEmpty(__tmp29_line))
                     {
                         __out.Append(__tmp29_line);
                     }
-                    int i = 0; //31:2
+                    int i = 0; //30:2
                     var __loop5_results = 
-                        (from arg in __Enumerate((func.Parameters).GetEnumerator()) //32:7
+                        (from arg in __Enumerate((func.Parameters).GetEnumerator()) //31:7
                         select new { arg = arg}
-                        ).ToList(); //32:2
+                        ).ToList(); //31:2
                     for (int __loop5_iteration = 0; __loop5_iteration < __loop5_results.Count; ++__loop5_iteration)
                     {
                         var __tmp30 = __loop5_results[__loop5_iteration];
@@ -304,7 +302,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                                 if (!__tmp33_last) __out.AppendLine(true);
                             }
                         }
-                        string __tmp34_line = " "; //33:15
+                        string __tmp34_line = " "; //32:15
                         if (!string.IsNullOrEmpty(__tmp34_line))
                         {
                             __out.Append(__tmp34_line);
@@ -324,21 +322,21 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                                 }
                             }
                         }
-                        if (i != func.Parameters.Count - 1) //34:2
+                        if (i != func.Parameters.Count - 1) //33:2
                         {
-                            __out.Append(", "); //34:33
+                            __out.Append(", "); //33:33
                         }
                         i = i + 1;
                     }
-                    __out.Append(")"); //36:1
-                    if (func.Exceptions != null && func.Exceptions.Count > 0) //37:2
+                    __out.Append(")"); //35:1
+                    if (func.Exceptions != null && func.Exceptions.Count > 0) //36:2
                     {
-                        __out.Append(" throws "); //38:1
-                        int j = 0; //39:2
+                        __out.Append(" throws "); //37:1
+                        int j = 0; //38:2
                         var __loop6_results = 
-                            (from ex in __Enumerate((func.Exceptions).GetEnumerator()) //40:7
+                            (from ex in __Enumerate((func.Exceptions).GetEnumerator()) //39:7
                             select new { ex = ex}
-                            ).ToList(); //40:2
+                            ).ToList(); //39:2
                         for (int __loop6_iteration = 0; __loop6_iteration < __loop6_results.Count; ++__loop6_iteration)
                         {
                             var __tmp36 = __loop6_results[__loop6_iteration];
@@ -358,42 +356,42 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB //1:1
                                     }
                                 }
                             }
-                            if (j != func.Exceptions.Count - 1) //42:2
+                            if (j != func.Exceptions.Count - 1) //41:2
                             {
-                                __out.Append(", "); //42:33
+                                __out.Append(", "); //41:33
                             }
                             j = j + 1;
                         }
                     }
-                    __out.Append(" {"); //44:9
-                    __out.AppendLine(false); //44:11
-                    __out.Append("		// TODO"); //45:1
-                    __out.AppendLine(false); //45:10
-                    __out.Append("        throw new UnsupportedOperationException();"); //46:1
-                    __out.AppendLine(false); //46:51
-                    __out.Append("	}"); //47:1
-                    __out.AppendLine(false); //47:3
-                    __out.AppendLine(true); //48:1
+                    __out.Append(" {"); //43:9
+                    __out.AppendLine(false); //43:11
+                    __out.Append("		// TODO"); //44:1
+                    __out.AppendLine(false); //44:10
+                    __out.Append("        throw new UnsupportedOperationException();"); //45:1
+                    __out.AppendLine(false); //45:51
+                    __out.Append("	}"); //46:1
+                    __out.AppendLine(false); //46:3
+                    __out.AppendLine(true); //47:1
                 }
             }
-            __out.Append("}"); //52:1
-            __out.AppendLine(false); //52:2
+            __out.Append("}"); //51:1
+            __out.AppendLine(false); //51:2
             return __out.ToString();
         }
 
-        public string tC(SoalType t) //56:1
+        public string tC(SoalType t) //55:1
         {
-            return JavaConventionHelper.classNameConvention(t); //57:2
+            return JavaConventionHelper.classNameConvention(t); //56:2
         }
 
-        public string mC(String methodName) //60:1
+        public string mC(String methodName) //59:1
         {
-            return JavaConventionHelper.methodNameConvention(methodName); //61:2
+            return JavaConventionHelper.methodNameConvention(methodName); //60:2
         }
 
-        public string pC(String packageName) //64:1
+        public string pC(String packageName) //63:1
         {
-            return JavaConventionHelper.packageConvention(packageName); //65:2
+            return JavaConventionHelper.packageConvention(packageName); //64:2
         }
 
         private class StringBuilder

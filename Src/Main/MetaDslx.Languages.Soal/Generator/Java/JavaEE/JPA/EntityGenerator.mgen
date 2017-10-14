@@ -7,7 +7,7 @@ using MetaDslx.Core;
 
 
 template Generate(Struct e, List<Struct> entities, List<string> imports)
-package [e.Namespace.Name.ToLower()].entities;
+package [pC(e.Namespace.Name)].entities;
 ^
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -22,9 +22,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.ManyToMany;
-import java.util.Date;
 [loop(import:imports)]
-[if(!import.Equals(e.Namespace.Name.ToLower()+".entities"))]import [import];[end if]
+[if(!import.Equals(pC(e.Namespace.Name)+".entities"))]import [import];[end if]
 [end loop]
 ^
 @Entity

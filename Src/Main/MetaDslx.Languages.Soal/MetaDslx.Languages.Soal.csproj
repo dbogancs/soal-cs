@@ -61,6 +61,12 @@
     <Compile Include="Compilation\SoalParseOptions.cs" />
     <Compile Include="Compilation\SoalScriptCompilationInfo.cs" />
     <Compile Include="Errors\SoalErrorCode.cs" />
+    <Compile Include="Generator\Config\ConfigConstants.cs" />
+    <Compile Include="Generator\Config\ConfigHandler.cs" />
+    <Compile Include="Generator\Java\Config\JavaTypeConfigConstants.cs" />
+    <Compile Include="Generator\Java\Config\JavaTypeConfigHandler.cs" />
+    <Compile Include="Generator\Java\Import\JavaImportConfigConstants.cs" />
+    <Compile Include="Generator\Java\Import\JavaImportConfigHandler.cs" />
     <Compile Include="Generator\Java\Import\JavaImportObject.cs" />
     <Compile Include="Generator\Java\JavaEE\EJB\EjbGenerator.cs">
       <AutoGen>True</AutoGen>
@@ -102,8 +108,8 @@
       <DependentUpon>EntityGenerator.mgen</DependentUpon>
     </Compile>
     <Compile Include="Generator\Java\JavaEE\JavaEePrinter.cs" />
-    <Compile Include="Generator\Java\JavaEE\Test\JavaEeTestConfigHandler.cs" />
-    <Compile Include="Generator\Java\JavaEE\Test\JavaEeTestConstants.cs" />
+    <Compile Include="Generator\Java\JavaEE\Config\JavaEeConfigHandler.cs" />
+    <Compile Include="Generator\Java\JavaEE\Config\JavaEeConfigConstants.cs" />
     <Compile Include="Generator\Java\Maven\MavenProjectStructure.cs" />
     <Compile Include="Generator\Java\JavaEE\JPA\PersistenceXmlGenerator.cs">
       <AutoGen>True</AutoGen>

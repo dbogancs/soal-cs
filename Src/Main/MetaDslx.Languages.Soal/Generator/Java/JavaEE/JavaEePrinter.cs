@@ -14,7 +14,6 @@ using System.Collections.Immutable;
 using System.IO;
 using MetaDslx.Languages.Soal.Generator.Java.Maven;
 using MetaDslx.Languages.Soal.Generator.Java.JavaEE.JPA;
-using MetaDslx.Languages.Soal.Generator.Java;
 using MetaDslx.Languages.Soal.Generator.Java.JavaEE.EJB;
 
 namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
