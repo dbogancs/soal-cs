@@ -36,7 +36,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
             {
                 foreach (var entity in db.Entities)
                 {
-                    List<string> importlist = imports.GetImportsFor(project.Name, entity.Namespace.Name, entity.Name);
+                    List<string> importlist = imports.GetFullImportObjectNamesForObject(project.Name, entity.Namespace.Name, entity.Name);
                     classes.Add(entity.FullName);
                     JavaEePrinter.PrintJpaEntity(entity, mstruc.mainJavaPath, db.Entities.ToList(), importlist);
                 }
@@ -81,10 +81,10 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
 
             foreach (var service in project.Services)
             {
-                importlist = imports.GetImportsFor(project.Name, service.Interface.Namespace.Name, service.Interface.Name);
+                importlist = imports.GetFullImportObjectNamesForObject(project.Name, service.Interface.Namespace.Name, service.Interface.Name);
                 JavaEePrinter.PrintJavaInterface(service.Interface, paths.mainJavaPath, importlist);
             }
-            importlist = imports.GetImportsFor(project.Name, project.Namespace.Name, project.Name);
+            importlist = imports.GetFullImportObjectNamesForObject(project.Name, project.Namespace.Name, project.Name);
             JavaEePrinter.PrintEjb(project, paths.mainJavaPath, importlist);
         }
 
@@ -97,111 +97,43 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
         {
             foreach (var service in project.Services)
             {
-                List<string> importlist = imports.GetImportsFor(project.Name, service.Interface.Namespace.Name, service.Interface.Name);
+                List<string> importlist = imports.GetFullImportObjectNamesForObject(project.Name, service.Interface.Namespace.Name, service.Interface.Name);
                 JavaEePrinter.PrintJavaInterface(service.Interface, mstruc.mainJavaPath, importlist);
             }
         }
 
-        public static void GenerateUsedComponents(Component project, MavenProjectStructure mstruc, JavaImportCollector imports)
+        public static void GenerateUsedObjects(Component project, MavenProjectStructure mstruc, JavaImportCollector imports)
         {
-            HashSet<Struct> usedEntities = new HashSet<Struct>();
-            HashSet<Symbols.Enum> usedEnums = new HashSet<Symbols.Enum>();
-            HashSet<Struct> usedExceptions = new HashSet<Struct>();
+            var iobjList = imports.GetImportsForProject(project.Name);
 
-            foreach (var attr in project.Properties)
+            foreach (var iobj in iobjList)
             {
-                FindUsedTypes(project, project.Name, attr.Type, usedEntities, usedEnums, imports);
-            }
-
-
-
-            foreach (var service in project.Services)
-            {
-                Database db = service.Interface as Database;
-                if (db != null)
+                foreach (var dec in project.Namespace.Declarations)
                 {
-                    foreach (var entity in db.Entities)
+                    if (dec.Name.Equals(iobj.importObjectName))
                     {
-                        FindUsedTypes(project, project.Name, entity, usedEntities, usedEnums, imports);
-                    }
-                }
-
-                foreach (var func in service.Interface.Operations)
-                {
-                    FindUsedTypes(project, service.Interface.Name, func.Result.Type, usedEntities, usedEnums, imports);
-                    FindUsedTypes(project, project.Name, func.Result.Type, usedEntities, usedEnums, imports);
-
-                    foreach (var attr in func.Parameters)
-                    {
-                        FindUsedTypes(project, service.Interface.Name, attr.Type, usedEntities, usedEnums, imports);
-                        FindUsedTypes(project, project.Name, attr.Type, usedEntities, usedEnums, imports);
-                    }
-
-                    foreach (var ex in func.Exceptions)
-                    {
-                        usedExceptions.Add(ex as Struct);
-                        imports.AddImportFor(project.Name, project.Namespace.Name, service.Interface.Name,
-                            JavaConventionHelper.packageConvention(project.Namespace.Name) + ".exceptions." + ex.Name);
-                        imports.AddImportFor(project.Name, project.Namespace.Name, project.Name,
-                            JavaConventionHelper.packageConvention(project.Namespace.Name) + ".exceptions." + ex.Name);
-                    }
-                }
-            }
-
-            foreach (var entity in usedEntities)
-            {
-                List<string> importlist = imports.GetImportsFor(project.Name, entity.Namespace.Name, entity.Name);
-                JavaEePrinter.PrintJpaEntity(entity, mstruc.mainJavaPath, usedEntities.ToList(), importlist);
-            }
-
-            foreach (var enumtype in usedEnums)
-            {
-                JavaEePrinter.PrintEnum(enumtype, mstruc.mainJavaPath);
-            }
-
-            foreach (var ex in usedExceptions)
-            {
-                JavaEePrinter.PrintJavaException(ex, mstruc.mainJavaPath);
-            }
-        }
-
-        private static void FindUsedTypes(Component project, string typeOwnerName, SoalType type, HashSet<Struct> structSet, HashSet<Symbols.Enum> enumSet, JavaImportCollector imports)
-        {
-            Struct entity = type as Struct;
-            ArrayType list = type as ArrayType;
-            Symbols.Enum enumtype = type as Symbols.Enum;
-
-            if (list != null)
-            {
-                entity = list.InnerType as Struct;
-                imports.AddImportFor(project.Name, project.Namespace.Name, typeOwnerName, "java.util.List");
-            }
-
-            if (entity != null)
-            {
-                structSet.Add(entity);
-                bool success = imports.AddImportFor(project.Name, project.Namespace.Name, typeOwnerName,
-                    JavaConventionHelper.packageConvention(project.Namespace.Name) + ".entities."+entity.Name);
-                if (success)
-                {
-                    foreach (var attr in entity.Properties)
-                    {
-                        SoalType attrToType = attr.Type as SoalType;
-                        Symbols.Enum attrToEnum = attr.Type as Symbols.Enum;
-
-                        if (attrToEnum != null)
+                        if (dec.Name.Contains("Exception"))
                         {
-                            enumSet.Add(attrToEnum);
-                            imports.AddImportFor(project.Name, project.Namespace.Name, entity.Name,
-                                JavaConventionHelper.packageConvention(project.Namespace.Name) + ".enums." + attrToEnum.Name);
+                            var ex = dec as Struct;
+                            if (ex != null) { JavaEePrinter.PrintJavaException(ex, mstruc.mainJavaPath); }
                         }
-                        else if(attrToType != null)
+                        else if (dec.MMetaClass.Name.Equals("Enum"))
                         {
-                            FindUsedTypes(project, entity.Name, attrToType, structSet, enumSet, imports);
+                            var en = dec as Symbols.Enum;
+                            if(en != null) { JavaEePrinter.PrintEnum(en, mstruc.mainJavaPath); }
+                        }
+                        else
+                        {
+                            var st = dec as Struct;
+                            if (st != null) {
+                                List<string> importlist = imports.GetFullImportObjectNamesForObject(project.Name, project.Namespace.Name, st.Name);
+                                JavaEePrinter.PrintJpaEntity(st, mstruc.mainJavaPath, new List<Struct>(), importlist);
+                            }
                         }
                     }
                 }
             }
+            
         }
 
         public static void GenerateMavenProject(Namespace ns, Composite application, Component project, string root)
@@ -210,7 +142,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
             mstruc.CreateMavenStructure();
 
             JavaImportCollector imports = new JavaImportCollector();
-            GenerateUsedComponents(project, mstruc, imports);
+            imports.CollectImportsFor(project);
 
             GenerateJavaInterfaces(project, mstruc, imports);
 
@@ -220,6 +152,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
             if (project.Implementation.Name.Equals("EJB"))
             { GenerateEjbProjectContent(project, mstruc, imports); }
 
+            GenerateUsedObjects(project, mstruc, imports);
 
             GeneratePomXml(
                 PomXmlIdentifierHandler.GetProjectIdentifier(application.MName, project),

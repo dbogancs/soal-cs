@@ -61,6 +61,7 @@
     <Compile Include="Compilation\SoalParseOptions.cs" />
     <Compile Include="Compilation\SoalScriptCompilationInfo.cs" />
     <Compile Include="Errors\SoalErrorCode.cs" />
+    <Compile Include="Generator\Java\Import\JavaImportObject.cs" />
     <Compile Include="Generator\Java\JavaEE\EJB\EjbGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,7 +88,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ExceptionGenerator.mgen</DependentUpon>
     </Compile>
-    <Compile Include="Generator\Java\JavaImportCollector.cs" />
+    <Compile Include="Generator\Java\Import\JavaImportCollector.cs" />
     <Compile Include="Generator\Java\InterfaceGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
