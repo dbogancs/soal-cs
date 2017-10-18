@@ -43,31 +43,31 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
                 Directory.CreateDirectory(mstruc.METAINFPath);
 
                 List<PersistenceXmlProperty> proplist = new List<PersistenceXmlProperty>();
-                if (JavaEeConfigHandler.configOn)
+                if (JpaConfigHandler.configOn)
                 {
                     proplist.Add(new PersistenceXmlProperty(
-                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_URL_PROP_NAME),
-                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_URL_PROP_VALUE)));
+                        JpaConfigHandler.getValue(JpaConfigConstants.URL_PROP_NAME),
+                        JpaConfigHandler.getValue(JpaConfigConstants.URL_PROP_VALUE)));
                     proplist.Add(new PersistenceXmlProperty(
-                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_USERNAME_PROP_NAME),
-                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_USERNAME_PROP_VALUE)));
+                        JpaConfigHandler.getValue(JpaConfigConstants.USERNAME_PROP_NAME),
+                        JpaConfigHandler.getValue(JpaConfigConstants.USERNAME_PROP_VALUE)));
                     proplist.Add(new PersistenceXmlProperty(
-                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_PASSWORD_PROP_NAME),
-                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_PASSWORD_PROP_VALUE)));
+                        JpaConfigHandler.getValue(JpaConfigConstants.PASSWORD_PROP_NAME),
+                        JpaConfigHandler.getValue(JpaConfigConstants.PASSWORD_PROP_VALUE)));
                     proplist.Add(new PersistenceXmlProperty(
-                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_DRIVER_PROP_NAME),
-                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_DRIVER_PROP_VALUE)));
+                        JpaConfigHandler.getValue(JpaConfigConstants.DRIVER_PROP_NAME),
+                        JpaConfigHandler.getValue(JpaConfigConstants.DRIVER_PROP_VALUE)));
                     proplist.Add(new PersistenceXmlProperty(
-                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_GENERATION_PROP_NAME),
-                        JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_GENERATION_PROP_VALUE)));
+                        JpaConfigHandler.getValue(JpaConfigConstants.GENERATION_PROP_NAME),
+                        JpaConfigHandler.getValue(JpaConfigConstants.GENERATION_PROP_VALUE)));
                 }
 
                 //JavaEePrinter.PrintAllEnum(ns, mstruc.mainJavaPath);
 
                 JavaEePrinter.PrintPersistenceXml
                     (
-                    JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_PERSISTENCE_UNIT),
-                    JavaEeConfigHandler.getValue(JavaEeConfigConstants.DATABASE_PERSISTENCE_UNIT_PROVIDER),
+                    JpaConfigHandler.getValue(JpaConfigConstants.PERSISTENCE_UNIT),
+                    JpaConfigHandler.getValue(JpaConfigConstants.PERSISTENCE_UNIT_PROVIDER),
                     classes,
                     proplist,
                     mstruc.METAINFPath

@@ -8,7 +8,7 @@ using MetaDslx.Languages.Soal.Generator.Config;
 
 namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.Config
 {
-    class JavaEeConfigConstants : ConfigConstants
+    class MavenConfigConstants : ConfigConstants
     {
         public static readonly string PROJECT_VERSION = "project_version";
 
@@ -27,22 +27,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE.Config
         public static readonly string EJB_DEPENDENCY_GROUPID = "ejb_dependency_groupid";
         public static readonly string EJB_DEPENDENCY_ARTIFACTID = "ejb_dependency_arifactid";
         public static readonly string EJB_DEPENDENCY_VERSION = "ejb_dependency_version";
-
-        public static readonly string DATABASE_PERSISTENCE_UNIT = "database_persistence_unit";
-        public static readonly string DATABASE_PERSISTENCE_UNIT_PROVIDER = "database_persistence_unit_provider";
-
-        public static readonly string DATABASE_URL_PROP_VALUE = "database_url_prop_value";
-        public static readonly string DATABASE_USERNAME_PROP_VALUE = "database_username_prop_value";
-        public static readonly string DATABASE_PASSWORD_PROP_VALUE = "database_password_prop_value";
-        public static readonly string DATABASE_DRIVER_PROP_VALUE = "database_driver_prop_value";
-        public static readonly string DATABASE_GENERATION_PROP_VALUE = "database_generation_prop_value";
-
-        public static readonly string DATABASE_URL_PROP_NAME = "database_url_prop_name";
-        public static readonly string DATABASE_USERNAME_PROP_NAME = "database_username_prop_name";
-        public static readonly string DATABASE_PASSWORD_PROP_NAME = "database_password_prop_name";
-        public static readonly string DATABASE_DRIVER_PROP_NAME = "database_driver_prop_name";
-        public static readonly string DATABASE_GENERATION_PROP_NAME = "database_generation_prop_name";
         
-        public override string CONFIG_PATH { get { return Path.Combine(System.IO.Directory.GetCurrentDirectory(), "javaee-config.txt"); } }
+        public override string CONFIG_PATH { get { return Path.Combine(System.IO.Directory.GetCurrentDirectory(), "maven-config.txt"); } }
     }
 }

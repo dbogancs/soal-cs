@@ -73,6 +73,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EjbGenerator.mgen</DependentUpon>
     </Compile>
+    <Compile Include="Generator\Java\JavaEE\JPA\JpaConfigConstants.cs" />
+    <Compile Include="Generator\Java\JavaEE\JPA\JpaConfigHandler.cs" />
     <Compile Include="Generator\Java\Maven\PomXmlGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,8 +110,8 @@
       <DependentUpon>EntityGenerator.mgen</DependentUpon>
     </Compile>
     <Compile Include="Generator\Java\JavaEE\JavaEePrinter.cs" />
-    <Compile Include="Generator\Java\JavaEE\Config\JavaEeConfigHandler.cs" />
-    <Compile Include="Generator\Java\JavaEE\Config\JavaEeConfigConstants.cs" />
+    <Compile Include="Generator\Java\Maven\MavenConfigHandler.cs" />
+    <Compile Include="Generator\Java\Maven\MavenConfigConstants.cs" />
     <Compile Include="Generator\Java\Maven\MavenProjectStructure.cs" />
     <Compile Include="Generator\Java\JavaEE\JPA\PersistenceXmlGenerator.cs">
       <AutoGen>True</AutoGen>
@@ -284,7 +286,9 @@
       <DependentUpon>SoalParser.ag4</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Generator\Java\JavaEE\Config\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

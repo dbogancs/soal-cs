@@ -14,7 +14,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.Maven
         {
             List<PomXmlIdentifier> dependencies = new List<PomXmlIdentifier>();
 
-            if (JavaEeConfigHandler.configOn)
+            if (MavenConfigHandler.configOn)
             {
                 //server = new PomXmlIdentifier();
                 //server.groupId = "org.wildfly.plugins";
@@ -22,26 +22,26 @@ namespace MetaDslx.Languages.Soal.Generator.Java.Maven
                 //server.version = "10.1.0.Final";
 
                 PomXmlIdentifier junitDep = new PomXmlIdentifier();
-                junitDep.groupId = JavaEeConfigHandler.getValue(JavaEeConfigConstants.JUNIT_DEPENDENCY_GROUPID);
-                junitDep.artifactId = JavaEeConfigHandler.getValue(JavaEeConfigConstants.JUNIT_DEPENDENCY_ARTIFACTID);
-                junitDep.version = JavaEeConfigHandler.getValue(JavaEeConfigConstants.JUNIT_DEPENDENCY_VERSION);
+                junitDep.groupId = MavenConfigHandler.getValue(MavenConfigConstants.JUNIT_DEPENDENCY_GROUPID);
+                junitDep.artifactId = MavenConfigHandler.getValue(MavenConfigConstants.JUNIT_DEPENDENCY_ARTIFACTID);
+                junitDep.version = MavenConfigHandler.getValue(MavenConfigConstants.JUNIT_DEPENDENCY_VERSION);
                 dependencies.Add(junitDep);
 
                 if (project.Implementation.Name.Equals("JPA"))
                 {
                     PomXmlIdentifier jpaDep = new PomXmlIdentifier();
-                    jpaDep.groupId = JavaEeConfigHandler.getValue(JavaEeConfigConstants.JPA_DEPENDENCY_GROUPID);
-                    jpaDep.artifactId = JavaEeConfigHandler.getValue(JavaEeConfigConstants.JPA_DEPENDENCY_ARTIFACTID);
-                    jpaDep.version = JavaEeConfigHandler.getValue(JavaEeConfigConstants.JPA_DEPENDENCY_VERSION);
+                    jpaDep.groupId = MavenConfigHandler.getValue(MavenConfigConstants.JPA_DEPENDENCY_GROUPID);
+                    jpaDep.artifactId = MavenConfigHandler.getValue(MavenConfigConstants.JPA_DEPENDENCY_ARTIFACTID);
+                    jpaDep.version = MavenConfigHandler.getValue(MavenConfigConstants.JPA_DEPENDENCY_VERSION);
                     dependencies.Add(jpaDep);
                 }
 
                 if (project.Implementation.Name.Equals("EJB"))
                 {
                     PomXmlIdentifier ejbDep = new PomXmlIdentifier();
-                    ejbDep.groupId = JavaEeConfigHandler.getValue(JavaEeConfigConstants.EJB_DEPENDENCY_GROUPID);
-                    ejbDep.artifactId = JavaEeConfigHandler.getValue(JavaEeConfigConstants.EJB_DEPENDENCY_ARTIFACTID);
-                    ejbDep.version = JavaEeConfigHandler.getValue(JavaEeConfigConstants.EJB_DEPENDENCY_VERSION);
+                    ejbDep.groupId = MavenConfigHandler.getValue(MavenConfigConstants.EJB_DEPENDENCY_GROUPID);
+                    ejbDep.artifactId = MavenConfigHandler.getValue(MavenConfigConstants.EJB_DEPENDENCY_ARTIFACTID);
+                    ejbDep.version = MavenConfigHandler.getValue(MavenConfigConstants.EJB_DEPENDENCY_VERSION);
                     dependencies.Add(ejbDep);
                 }
             }
@@ -54,7 +54,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.Maven
             PomXmlIdentifier projectId = new PomXmlIdentifier();
             projectId.groupId = appName;
             projectId.artifactId = project.MName;
-            if (JavaEeConfigHandler.configOn) projectId.version = JavaEeConfigHandler.getValue(JavaEeConfigConstants.PROJECT_VERSION);
+            if (MavenConfigHandler.configOn) projectId.version = MavenConfigHandler.getValue(MavenConfigConstants.PROJECT_VERSION);
 
             return projectId;
         }
