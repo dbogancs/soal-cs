@@ -14,7 +14,6 @@ namespace MetaDslx.Languages.Soal.Generator.Java.Import
         
         public void CollectImportsFor(Component project)
         {
-            imports.Clear();
             AnalyseProject(project);
         }
 
