@@ -41,17 +41,6 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
             }
         }
 
-        public static void PrintJavaInterface(Interface iface, string root, List<string> imports)
-        {
-            string packageDirectory = Path.Combine(root, JavaConventionHelper.packageConvention(iface.Namespace.Name));
-            Directory.CreateDirectory(packageDirectory);
-            using (StreamWriter writer = new StreamWriter(Path.Combine(packageDirectory, iface.Name + ".java")))
-            {
-                InterfaceGenerator javaGen = new InterfaceGenerator();
-                writer.WriteLine(javaGen.Generate(iface, imports));
-            }
-        }
-
         public static void PrintEjb(Component project, string root, List<string> imports)
         {
             string packageDirectory = Path.Combine(root, JavaConventionHelper.packageConvention(project.Namespace.Name));
@@ -70,44 +59,6 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
                 PersistenceXmlGenerator persGen = new PersistenceXmlGenerator();
 
                 writer.WriteLine(persGen.Generate(persistenceUnit, persistenceUnitProvider, classes, persistenceUnitPropertyList));
-            }
-        }
-
-        public static void PrintEnum(Symbols.Enum en, string root)
-        {
-            string packageDirectory = Path.Combine(root, JavaConventionHelper.packageConvention(en.Namespace.Name));
-            string enumDirectory = Path.Combine(packageDirectory, "enums");
-            Directory.CreateDirectory(enumDirectory);
-            using (StreamWriter writer = new StreamWriter(Path.Combine(enumDirectory, en.Name + ".java")))
-            {
-                EnumGenerator javaGen = new EnumGenerator();
-                writer.WriteLine(javaGen.Generate(en));
-            }
-        }
-
-        /*
-        public static void PrintAllEnum(Namespace ns, string root)
-        {
-            foreach (var decl in ns.Declarations)
-            {
-                if (decl.MMetaClass.Name.Equals("Enum"))
-                {
-                    var en = decl as Symbols.Enum;
-                    JavaEePrinter.PrintEnum(en, root);
-                }
-            }
-        }
-        */
-
-        public static void PrintJavaException(Struct ex, string root)
-        {
-            string packageDirectory = Path.Combine(root, JavaConventionHelper.packageConvention(ex.Namespace.Name));
-            string exceptionDirectory = Path.Combine(packageDirectory, "exceptions");
-            Directory.CreateDirectory(exceptionDirectory);
-            using (StreamWriter writer = new StreamWriter(Path.Combine(exceptionDirectory, ex.Name + ".java")))
-            {
-                ExceptionGenerator javaGen = new ExceptionGenerator();
-                writer.WriteLine(javaGen.Generate(ex));
             }
         }
     }
