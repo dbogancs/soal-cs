@@ -1,0 +1,21 @@
+config_on: true
+
+# pom.xml
+
+project_version: 1.0
+
+server_groupid: org.wildfly.plugins
+server_artifactid: wildfly-javaee7-with-tools
+server_version: 10.1.0.Final
+
+junit_dependency_groupid: junit
+junit_dependency_artifactid: junit
+junit_dependency_version: 3.8.1
+
+jpa_dependency_groupid:org.hibernate.javax.persistence
+jpa_dependency_arifactid: hibernate-jpa-2.0-api
+jpa_dependency_version: 1.0.1.Final
+
+ejb_dependency_groupid:javax
+ejb_dependency_arifactid: javaee-api
+ejb_dependency_version: 6.0
