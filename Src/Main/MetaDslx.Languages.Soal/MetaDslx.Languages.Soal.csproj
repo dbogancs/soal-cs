@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="Generator\Java\JavaEE\JPA\JpaConfigConstants.cs" />
     <Compile Include="Generator\Java\JavaEE\JPA\JpaConfigHandler.cs" />
+    <Compile Include="Generator\Java\JavaPrinter.cs" />
     <Compile Include="Generator\Java\Maven\PomXmlGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,11 +135,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>WebsocketInterfaceGenerator.mgen</DependentUpon>
-    </Compile>
-    <Compile Include="Generator\Sample.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Sample.mgen</DependentUpon>
     </Compile>
     <Compile Include="Generator\SoalGenerator.cs" />
     <Compile Include="Generator\SoalGeneratorErrorCode.cs" />
@@ -244,10 +240,6 @@
     <None Include="Generator\Java\JavaEE\Webservice\WebsocketInterfaceGenerator.mgen">
       <Generator>MetaGenerator</Generator>
       <LastGenOutput>WebsocketInterfaceGenerator.cs</LastGenOutput>
-    </None>
-    <None Include="Generator\Sample.mgen">
-      <Generator>MetaGenerator</Generator>
-      <LastGenOutput>Sample.cs</LastGenOutput>
     </None>
     <None Include="Generator\SoalPrinter.mgen">
       <Generator>MetaGenerator</Generator>

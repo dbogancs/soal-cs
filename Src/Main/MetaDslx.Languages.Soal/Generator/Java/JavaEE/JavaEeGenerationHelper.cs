@@ -12,6 +12,7 @@ using MetaDslx.Languages.Soal.Generator;
 using MetaDslx.Languages.Soal.Symbols;
 using System.Collections.Immutable;
 using System.IO;
+using MetaDslx.Languages.Soal.Generator.Java;
 using MetaDslx.Languages.Soal.Generator.Java.Import;
 using MetaDslx.Languages.Soal.Generator.Java.Maven;
 using MetaDslx.Languages.Soal.Generator.Java.JavaEE.JPA;
@@ -82,7 +83,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
             foreach (var service in project.Services)
             {
                 importlist = imports.GetFullImportObjectNamesForObject(project.Name, service.Interface.Namespace.Name, service.Interface.Name);
-                JavaEePrinter.PrintJavaInterface(service.Interface, paths.mainJavaPath, importlist);
+                JavaPrinter.PrintInterface(service.Interface, paths.mainJavaPath, importlist);
             }
             importlist = imports.GetFullImportObjectNamesForObject(project.Name, project.Namespace.Name, project.Name);
             JavaEePrinter.PrintEjb(project, paths.mainJavaPath, importlist);
@@ -98,7 +99,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
             foreach (var service in project.Services)
             {
                 List<string> importlist = imports.GetFullImportObjectNamesForObject(project.Name, service.Interface.Namespace.Name, service.Interface.Name);
-                JavaEePrinter.PrintJavaInterface(service.Interface, mstruc.mainJavaPath, importlist);
+                JavaPrinter.PrintInterface(service.Interface, mstruc.mainJavaPath, importlist);
             }
         }
 
@@ -115,12 +116,12 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
                         if (dec.Name.Contains("Exception"))
                         {
                             var ex = dec as Struct;
-                            if (ex != null) { JavaEePrinter.PrintJavaException(ex, mstruc.mainJavaPath); }
+                            if (ex != null) { JavaPrinter.PrintException(ex, mstruc.mainJavaPath); }
                         }
                         else if (dec.MMetaClass.Name.Equals("Enum"))
                         {
                             var en = dec as Symbols.Enum;
-                            if(en != null) { JavaEePrinter.PrintEnum(en, mstruc.mainJavaPath); }
+                            if(en != null) { JavaPrinter.PrintEnum(en, mstruc.mainJavaPath); }
                         }
                         else
                         {
@@ -136,7 +137,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
             
         }
 
-        public static void GenerateMavenProject(Namespace ns, Composite application, Component project, string root)
+        public static void GenerateMavenProject(Composite application, Component project, string root)
         {
             MavenProjectStructure mstruc = new MavenProjectStructure(root, project.Name);
             mstruc.CreateMavenStructure();
@@ -174,7 +175,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java.JavaEE
                     
                     foreach (var project in composite.Components)
                     {
-                        GenerateMavenProject(ns, composite, project, parentRoot);
+                        GenerateMavenProject(composite, project, parentRoot);
                     }
                 }
             }

@@ -12,7 +12,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java
     class JavaPrinter
     {
 
-        public static void PrintJavaInterface(Interface iface, string root, List<string> imports)
+        public static void PrintInterface(Interface iface, string root, List<string> imports)
         {
             string packageDirectory = Path.Combine(root, JavaConventionHelper.packageConvention(iface.Namespace.Name));
             Directory.CreateDirectory(packageDirectory);
@@ -35,7 +35,7 @@ namespace MetaDslx.Languages.Soal.Generator.Java
             }
         }
 
-        public static void PrintJavaException(Struct ex, string root)
+        public static void PrintException(Struct ex, string root)
         {
             string packageDirectory = Path.Combine(root, JavaConventionHelper.packageConvention(ex.Namespace.Name));
             string exceptionDirectory = Path.Combine(packageDirectory, "exceptions");
