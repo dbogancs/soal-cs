@@ -1,0 +1,16 @@
+config_on: true
+
+# persistence.xml
+
+persistence_unit: SampleDBPU
+persistence_unit_provider: org.eclipse.persistence.jpa.PersistenceProvider
+url_prop_name: javax.persistence.jdbc.url
+url_prop_value: jdbc: derby://localhost:1527/cinema_database
+driver_prop_name:javax.persistence.jdbc.driver
+driver_prop_value: org.apache.derby.jdbc.ClientDriver
+username_prop_name: javax.persistence.jdbc.user
+username_prop_value: username
+password_prop_name: javax.persistence.jdbc.password
+password_prop_value: password
+generation_prop_name: javax.persistence.schema-generation.database.action
+generation_prop_value: drop-and-create

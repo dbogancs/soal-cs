@@ -1,0 +1,6 @@
+config_on: true
+
+ArrayType: List
+TimeSpan: Date
+string: String
+DateTime: Date
